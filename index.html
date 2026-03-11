@@ -151,115 +151,147 @@
         </div>
 
         <!-- CTA -->
-        <a href="/apply-now"
-            class="nav-font bg-gradient-to-r from-jaipuria-accent to-amber-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all duration-300">
+        <a href="#"
+            class="openLeadPopup nav-font bg-gradient-to-r from-jaipuria-accent to-amber-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all duration-300">
             Apply Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
         </a>
     </nav>
 
     <!-- 2. HERO SECTION -->
-    <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Parallax feel -->
-        <div class="absolute inset-0 z-0">
-            <img src="heroImage.webp" alt="Global Campus" class="w-full h-full object-cover object-center">
-            <!-- Dark Blue Corporate Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-r from-jaipuria-blue/95 via-jaipuria-blue/80 to-slate-900/70">
+    <header class="relative w-full h-[50vh] pt-16 md:pt-20 flex items-center justify-center">
+
+        <!-- Background -->
+        <div class="absolute inset-0 -z-10">
+            <img src="hero.jpg" alt="Global Campus" class="w-full h-full object-cover object-center">
+
+            <!-- Overlay -->
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-jaipuria-blue/95 via-jaipuria-blue/80 to-slate-900/70 overflow-hidden">
             </div>
         </div>
 
         <!-- Hero Content -->
-        <div class="relative z-400 text-center px-4 max-w-5xl mx-auto mt-16">
-            <span
+        <div class="relative text-center px-4 max-w-5xl mx-auto">
+
+            <!-- <span
                 class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-jaipuria-accent font-semibold text-sm tracking-widest mb-6 uppercase">
                 Centre for International Relations
-            </span>
-            <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6 drop-shadow-lg">
+            </span> -->
+
+            <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6 drop-shadow-lg">
                 Take Your Career <br>
-                <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-jaipuria-accent to-amber-300">Global.</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-jaipuria-accent to-amber-300">
+                    Global.
+                </span>
             </h1>
-            <p class="text-lg md:text-2xl text-slate-200 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+
+            <!-- <p class="text-base md:text-xl text-slate-200 font-light mb-8 max-w-3xl mx-auto leading-relaxed">
                 Transformative academic exchanges, global immersion, and cross-disciplinary research across 15+
                 countries. Expand your horizons.
-            </p>
+            </p> -->
 
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <!-- <div class="flex flex-col sm:flex-row justify-center gap-4">
+
                 <button onclick="document.getElementById('core-ui').scrollIntoView({behavior: 'smooth'})"
                     class="nav-font bg-jaipuria-accent hover:bg-amber-400 text-jaipuria-dark px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-amber-500/40 hover:-translate-y-1 transition-all duration-300">
                     Explore Programs
                 </button>
+
                 <a href="/brochure"
                     class="nav-font bg-transparent border-2 border-white/50 hover:border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-download"></i> Download IR Brochure
                 </a>
-            </div>
+
+            </div> -->
         </div>
 
-        <!-- The "Aukaat" (Stats) Strip -->
-        <div class="absolute -bottom-0 md:-bottom-0 left-1/2 transform -translate-x-1/2 w-[95%] max-w-5xl z-500 mb-2">
+
+        <!-- Stats Strip -->
+        <!-- <div class="absolute left-1/2 -bottom-14 -translate-x-1/2 w-[95%] max-w-5xl"> -->
+        <div class="absolute left-1/2 -bottom-16 -translate-x-1/2 w-[95%] max-w-5xl">
+
             <div
                 class="glass-panel rounded-3xl p-6 md:p-8 flex flex-col md:flex-row justify-around items-center gap-8 shadow-glass">
+
                 <div class="text-center">
                     <div class="text-4xl md:text-5xl font-black text-white mb-1 counter" data-target="50">0</div>
-                    <div class="text-amber-400 font-medium tracking-wide uppercase text-sm">Global Partners</div>
+                    <div class="text-[#001E51] font-bold tracking-wide uppercase text-md">Global Partners</div>
                 </div>
+
                 <div class="hidden md:block w-px h-16 bg-white/20"></div>
+
                 <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-black text-white mb-1"><span class="counter"
-                            data-target="15">0</span>+</div>
-                    <div class="text-amber-400 font-medium tracking-wide uppercase text-sm">Countries</div>
+                    <div class="text-4xl md:text-5xl font-black text-white mb-1">
+                        <span class="counter" data-target="15">0</span>+
+                    </div>
+                    <div class="text-[#001E51] font-bold tracking-wide uppercase text-md">Countries</div>
                 </div>
+
                 <div class="hidden md:block w-px h-16 bg-white/20"></div>
+
                 <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-black text-white mb-1"><span class="counter"
-                            data-target="100">0</span>+</div>
-                    <div class="text-amber-400 font-medium tracking-wide uppercase text-sm">Exchanges Yearly</div>
+                    <div class="text-4xl md:text-5xl font-black text-white mb-1">
+                        <span class="counter" data-target="100">0</span>+
+                    </div>
+                    <div class="text-[#001E51] font-bold tracking-wide uppercase text-md">Exchanges Yearly</div>
                 </div>
+
             </div>
+
         </div>
+
     </header>
 
     <!-- 3. CORE UI: TAB-BASED NAVIGATION -->
     <main id="core-ui" class="pt-20 md:pt-30 pb-20 px-4 md:px-12 max-w-7xl mx-auto relative z-10">
 
         <!-- Tab Headers -->
-        <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-16 border-b border-slate-200 pb-2">
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-16 border-b border-slate-200 pb-6">
+
             <button
-                class="tab-btn active nav-font px-6 py-3 rounded-t-xl text-lg font-bold transition-all text-jaipuria-blue border-b-4 border-jaipuria-accent"
+                class="tab-btn active nav-font px-6 py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 text-jaipuria-blue border-b-4 border-jaipuria-accent bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2"
                 data-tab="tab-overview">
+                <i class="fa-solid fa-globe"></i>
                 Overview
             </button>
+
             <button
-                class="tab-btn nav-font px-6 py-3 rounded-t-xl text-lg font-bold transition-all text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300"
+                class="tab-btn nav-font px-6 py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300 bg-white/70 hover:bg-white shadow-sm hover:shadow-md flex items-center gap-2"
                 data-tab="tab-partners">
+                <i class="fa-solid fa-handshake"></i>
                 Global Partners
             </button>
+
             <button
-                class="tab-btn nav-font px-6 py-3 rounded-t-xl text-lg font-bold transition-all text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300"
+                class="tab-btn nav-font px-6 py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300 bg-white/70 hover:bg-white shadow-sm hover:shadow-md flex items-center gap-2"
                 data-tab="tab-immersion">
+                <i class="fa-solid fa-plane-departure"></i>
                 Immersion & Exchange
             </button>
+
             <button
-                class="tab-btn nav-font px-6 py-3 rounded-t-xl text-lg font-bold transition-all text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300"
+                class="tab-btn nav-font px-6 py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300 bg-white/70 hover:bg-white shadow-sm hover:shadow-md flex items-center gap-2"
                 data-tab="tab-voices">
+                <i class="fa-solid fa-graduation-cap"></i>
                 Student Voices
             </button>
+
         </div>
 
         <!-- TAB 1: OVERVIEW -->
         <section id="tab-overview" class="tab-content active">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Chairperson Message -->
-                <div class="relative">
+                <div class="relative lg:sticky lg:top-28 self-start lg:pr-8">
                     <div class="absolute -top-6 -left-6 text-9xl text-slate-200/50 font-serif leading-none z-0">"</div>
                     <div class="relative z-10 bg-white rounded-3xl p-8 shadow-soft border border-slate-100">
                         <div class="flex items-center gap-6 mb-6">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2022/09/Dr.-Pallavi-Srivastava-1.jpg"
                                 alt="Chairperson"
                                 class="w-24 h-24 rounded-full object-cover shadow-lg border-4 border-white">
                             <div>
-                                <h3 class="text-2xl font-bold text-jaipuria-dark nav-font">Dr. Global Visionary</h3>
-                                <p class="text-jaipuria-accent font-medium">Chairperson, International Relations</p>
+                                <h3 class="text-2xl font-bold text-jaipuria-dark nav-font">Dr. Pallavi Shrivastava</h3>
+                                <p class="text-jaipuria-accent font-medium">Dean, International Relations</p>
                             </div>
                         </div>
                         <p class="text-slate-600 leading-relaxed text-lg mb-6">
@@ -341,152 +373,20 @@
 
         <!-- TAB 2: GLOBAL PARTNERS -->
         <section id="tab-partners" class="tab-content">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-black text-jaipuria-dark mb-4 nav-font">Our Global Footprint</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">Collaborating with top-tier institutions worldwide to bring
-                    you unparalleled academic excellence.</p>
+
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-jaipuria-dark mb-4 nav-font">
+                    Our Global Footprint
+                </h2>
+
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    Collaborating with top-tier institutions worldwide to bring
+                    you unparalleled academic excellence.
+                </p>
             </div>
 
-            <!-- Region: Europe -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-jaipuria-blue mb-6 border-b-2 border-slate-200 pb-2 inline-block"><i
-                        class="fa-solid fa-earth-europe mr-2 text-jaipuria-accent"></i> Europe</h3>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Card 1 (Mandatory) -->
-                    <div
-                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
-                        <div
-                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
-                            <img src="https://logo.clearbit.com/rennes-sb.com"
-                                onerror="this.src='https://ui-avatars.com/api/?name=RSB&background=fff'" alt="Rennes SB"
-                                class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div>
-                            <div
-                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
-                                <span class="text-lg">🇫🇷</span> France
-                            </div>
-                            <h4 class="font-bold text-jaipuria-dark leading-tight">Rennes School of Business</h4>
-                        </div>
-                    </div>
-                    <!-- Placeholder EU Cards -->
-                    <div
-                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
-                        <div
-                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
-                            <img src="https://logo.clearbit.com/mbs-education.com"
-                                onerror="this.src='https://ui-avatars.com/api/?name=MBS&background=fff'"
-                                alt="Munich Business School" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div>
-                            <div
-                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
-                                <span class="text-lg">🇩🇪</span> Germany
-                            </div>
-                            <h4 class="font-bold text-jaipuria-dark leading-tight">Munich Business School</h4>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
-                        <div
-                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
-                            <img src="https://logo.clearbit.com/porto.pt"
-                                onerror="this.src='https://ui-avatars.com/api/?name=UP&background=fff'" alt="U Porto"
-                                class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div>
-                            <div
-                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
-                                <span class="text-lg">🇵🇹</span> Portugal
-                            </div>
-                            <h4 class="font-bold text-jaipuria-dark leading-tight">University of Porto</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="partnersContainer" class="space-y-16"></div>
 
-            <!-- Region: Asia-Pacific -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-jaipuria-blue mb-6 border-b-2 border-slate-200 pb-2 inline-block"><i
-                        class="fa-solid fa-earth-asia mr-2 text-jaipuria-accent"></i> Asia-Pacific</h3>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Card 2 (Mandatory) -->
-                    <div
-                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
-                        <div
-                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
-                            <img src="https://logo.clearbit.com/tarc.edu.my"
-                                onerror="this.src='https://ui-avatars.com/api/?name=TAR&background=fff'" alt="TAR UMT"
-                                class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div>
-                            <div
-                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
-                                <span class="text-lg">🇲🇾</span> Malaysia
-                            </div>
-                            <h4 class="font-bold text-jaipuria-dark leading-tight">TAR UMT</h4>
-                        </div>
-                    </div>
-                    <!-- Card 3 (Mandatory) -->
-                    <div
-                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
-                        <div
-                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
-                            <img src="https://logo.clearbit.com/uow.edu.au"
-                                onerror="this.src='https://ui-avatars.com/api/?name=UOW&background=fff'" alt="UoW"
-                                class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div>
-                            <div
-                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
-                                <span class="text-lg">🇦🇺</span> Australia / Dubai
-                            </div>
-                            <h4 class="font-bold text-jaipuria-dark leading-tight">University of Wollongong</h4>
-                        </div>
-                    </div>
-                    <!-- Card 4 (Mandatory) -->
-                    <div
-                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
-                        <div
-                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
-                            <img src="https://logo.clearbit.com/whitireia.ac.nz"
-                                onerror="this.src='https://ui-avatars.com/api/?name=W&background=fff'" alt="Weltech"
-                                class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div>
-                            <div
-                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
-                                <span class="text-lg">🇳🇿</span> New Zealand
-                            </div>
-                            <h4 class="font-bold text-jaipuria-dark leading-tight">Weltech & Whitireia</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Region: Americas -->
-            <div class="mb-4">
-                <h3 class="text-2xl font-bold text-jaipuria-blue mb-6 border-b-2 border-slate-200 pb-2 inline-block"><i
-                        class="fa-solid fa-earth-americas mr-2 text-jaipuria-accent"></i> Americas</h3>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div
-                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
-                        <div
-                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
-                            <img src="https://logo.clearbit.com/centennialcollege.ca"
-                                onerror="this.src='https://ui-avatars.com/api/?name=CC&background=fff'" alt="Centennial"
-                                class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div>
-                            <div
-                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
-                                <span class="text-lg">🇨🇦</span> Canada
-                            </div>
-                            <h4 class="font-bold text-jaipuria-dark leading-tight">Centennial College</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- TAB 3: IMMERSION & EXCHANGE -->
@@ -655,7 +555,7 @@
                 <!-- Reel 4 -->
                 <div
                     class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 md:mt-8">
-                    <img src="https://images.unsplash.com/photo-1525926472810-2521877b6381?w=600&q=80"
+                    <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="Student Group"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
@@ -681,66 +581,8 @@
 
     </main>
 
-    <!-- 4. LEAD CAPTURE SECTION -->
-    <section class="bg-jaipuria-dark py-20 relative overflow-hidden">
-        <!-- Abstract Shapes -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-            <div
-                class="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-jaipuria-blue blur-[120px] opacity-40">
-            </div>
-            <div
-                class="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-jaipuria-accent blur-[120px] opacity-20">
-            </div>
-        </div>
 
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl md:text-5xl font-black text-white mb-4 nav-font">Ready to Step Out?</h2>
-                    <p class="text-slate-300">Drop your details below and our IR coordinators will get in touch with
-                        you.</p>
-                </div>
-
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <!-- <label class="block text-sm font-medium text-slate-300 mb-2">Full Name</label> -->
-                            <input type="text" placeholder="Full Name"
-                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-jaipuria-accent transition-all">
-                        </div>
-                        <div>
-                            <!-- <label class="block text-sm font-medium text-slate-300 mb-2">Email Address</label> -->
-                            <input type="email" placeholder="Email Address"
-                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-jaipuria-accent transition-all">
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <!-- <label class="block text-sm font-medium text-slate-300 mb-2">Phone Number</label> -->
-                            <input type="tel" placeholder="Phone Number"
-                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-jaipuria-accent transition-all">
-                        </div>
-                        <div>
-                            <!-- <label class="block text-sm font-medium text-slate-300 mb-2">Interested In</label> -->
-                            <select
-                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-slate-300 focus:outline-none focus:ring-2 focus:ring-jaipuria-accent transition-all [&>option]:text-jaipuria-dark">
-                                <option value="" disabled selected>Interested In</option>
-                                <option value="exchange">Student Exchange (Semester Abroad)</option>
-                                <option value="immersion">Global Immersion (Short Term)</option>
-                                <option value="general">General Inquiry</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="button"
-                        class="w-full bg-gradient-to-r from-jaipuria-accent to-amber-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-amber-500/50 hover:-translate-y-1 transition-all duration-300 nav-font mt-4">
-                        Request Callback
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. FOOTER -->
+    <!-- 4. FOOTER -->
     <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="md:col-span-2">
@@ -804,78 +646,67 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVITY LOGIC -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    <!-- LEAD POPUP -->
+    <div id="leadPopup"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[999] hidden">
 
-            // 1. Navbar Scroll Effect
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('nav-scrolled');
-                } else {
-                    navbar.classList.remove('nav-scrolled');
-                }
-            });
+        <div class="bg-white rounded-2xl w-full max-w-xl p-8 relative shadow-2xl">
 
-            // 2. Tab Navigation System
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
+            <!-- CLOSE BUTTON -->
+            <button id="closeLeadPopup" class="absolute top-4 right-4 text-slate-500 hover:text-red-500 text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active from all
-                    tabBtns.forEach(b => {
-                        b.classList.remove('active', 'text-jaipuria-blue', 'border-jaipuria-accent');
-                        b.classList.add('text-slate-400', 'border-transparent');
-                    });
-                    tabContents.forEach(c => c.classList.remove('active'));
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-black text-jaipuria-dark mb-2 nav-font">
+                    Ready to Step Out?
+                </h2>
+                <p class="text-slate-500">
+                    Drop your details and our IR coordinators will contact you.
+                </p>
+            </div>
 
-                    // Add active to clicked
-                    btn.classList.add('active', 'text-jaipuria-blue', 'border-jaipuria-accent');
-                    btn.classList.remove('text-slate-400', 'border-transparent');
+            <form class="space-y-5">
 
-                    const targetId = btn.getAttribute('data-tab');
-                    document.getElementById(targetId).classList.add('active');
-                });
-            });
+                <div class="grid md:grid-cols-2 gap-5">
 
-            // 3. Counter Animation for Stats Strip
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
+                    <input type="text" placeholder="Full Name"
+                        class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-jaipuria-accent outline-none">
 
-            const animateCounters = () => {
-                counters.forEach(counter => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / speed;
+                    <input type="email" placeholder="Email Address"
+                        class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-jaipuria-accent outline-none">
 
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(animateCounters, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                });
-            }
+                </div>
 
-            // Intersection Observer to start counters when visible
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
 
-            // Observe the parent container of counters
-            const statsContainer = document.querySelector('.glass-panel');
-            if (statsContainer) observer.observe(statsContainer);
+                <div class="grid md:grid-cols-2 gap-5">
 
-        });
-    </script>
+                    <input type="tel" placeholder="Phone Number"
+                        class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-jaipuria-accent outline-none">
+
+                    <select
+                        class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-jaipuria-accent outline-none">
+
+                        <option disabled selected>Interested In</option>
+                        <option value="exchange">Student Exchange (Semester Abroad)</option>
+                        <option value="immersion">Global Immersion</option>
+                        <option value="general">General Inquiry</option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-jaipuria-accent text-white font-bold py-3 rounded-lg hover:opacity-90 transition">
+                    Request Callback
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
