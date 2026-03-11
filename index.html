@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Relations | Jaipuria Institute of Management</title>
+    <link rel="icon" href="https://www.jaipuria.ac.in/wp-content/uploads/2022/05/favicon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Montserrat (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        jaipuria: {
+                            blue: '#1e3a8a', // blue-900
+                            light: '#3b82f6', // blue-500
+                            accent: '#f59e0b', // amber-500
+                            dark: '#0f172a', // slate-900
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base & Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .nav-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Tab Transitions */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Nav Transition */
+        #navbar {
+            transition: all 0.3s ease;
+        }
+
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-scrolled .nav-link {
+            color: #1e3a8a !important;
+        }
+
+        /* Image Overlays */
+        .gradient-overlay {
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.1) 100%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-jaipuria-accent selection:text-white">
+
+    <!-- 1. NAVIGATION -->
+    <nav id="navbar"
+        class="fixed w-full z-50 top-0 py-4 px-6 bg-white md:px-12 flex justify-between items-center transition-all">
+        <!-- Logo -->
+        <a href="https://www.jaipuria.ac.in/" class="flex items-center gap-3 group">
+            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Jaipuria-Logo.jpg" alt="Jaipuria Logo"
+                class="w-40 h-auto object-contain group-hover:scale-110 transition-transform duration-300">
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden lg:flex items-center space-x-8">
+            <a href="#overview"
+                class="nav-link nav-font text-dark font-bold hover:text-jaipuria-accent text-sm tracking-wide transition-colors">Overview</a>
+            <a href="#partners"
+                class="nav-link nav-font text-dark font-bold hover:text-jaipuria-accent text-sm tracking-wide transition-colors">Global
+                Partners</a>
+            <a href="#programs"
+                class="nav-link nav-font text-dark font-bold hover:text-jaipuria-accent text-sm tracking-wide transition-colors">Immersion</a>
+            <a href="#voices"
+                class="nav-link nav-font text-dark font-bold hover:text-jaipuria-accent text-sm tracking-wide transition-colors">Student
+                Voices</a>
+        </div>
+
+        <!-- CTA -->
+        <a href="/apply-now"
+            class="nav-font bg-gradient-to-r from-jaipuria-accent to-amber-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all duration-300">
+            Apply Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+        </a>
+    </nav>
+
+    <!-- 2. HERO SECTION -->
+    <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Parallax feel -->
+        <div class="absolute inset-0 z-0">
+            <img src="/heroImage.jpg" alt="Global Campus" class="w-full h-full object-cover object-center">
+            <!-- Dark Blue Corporate Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-jaipuria-blue/95 via-jaipuria-blue/80 to-slate-900/70">
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-400 text-center px-4 max-w-5xl mx-auto mt-16">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-jaipuria-accent font-semibold text-sm tracking-widest mb-6 uppercase">
+                Centre for International Relations
+            </span>
+            <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6 drop-shadow-lg">
+                Take Your Career <br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-jaipuria-accent to-amber-300">Global.</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-slate-200 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+                Transformative academic exchanges, global immersion, and cross-disciplinary research across 15+
+                countries. Expand your horizons.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="document.getElementById('core-ui').scrollIntoView({behavior: 'smooth'})"
+                    class="nav-font bg-jaipuria-accent hover:bg-amber-400 text-jaipuria-dark px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-amber-500/40 hover:-translate-y-1 transition-all duration-300">
+                    Explore Programs
+                </button>
+                <a href="/brochure"
+                    class="nav-font bg-transparent border-2 border-white/50 hover:border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> Download IR Brochure
+                </a>
+            </div>
+        </div>
+
+        <!-- The "Aukaat" (Stats) Strip -->
+        <div class="absolute -bottom-0 md:-bottom-0 left-1/2 transform -translate-x-1/2 w-[95%] max-w-5xl z-500 mb-2">
+            <div
+                class="glass-panel rounded-3xl p-6 md:p-8 flex flex-col md:flex-row justify-around items-center gap-8 shadow-glass">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-1 counter" data-target="50">0</div>
+                    <div class="text-amber-400 font-medium tracking-wide uppercase text-sm">Global Partners</div>
+                </div>
+                <div class="hidden md:block w-px h-16 bg-white/20"></div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-1"><span class="counter"
+                            data-target="15">0</span>+</div>
+                    <div class="text-amber-400 font-medium tracking-wide uppercase text-sm">Countries</div>
+                </div>
+                <div class="hidden md:block w-px h-16 bg-white/20"></div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-1"><span class="counter"
+                            data-target="100">0</span>+</div>
+                    <div class="text-amber-400 font-medium tracking-wide uppercase text-sm">Exchanges Yearly</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. CORE UI: TAB-BASED NAVIGATION -->
+    <main id="core-ui" class="pt-20 md:pt-30 pb-20 px-4 md:px-12 max-w-7xl mx-auto relative z-10">
+
+        <!-- Tab Headers -->
+        <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-16 border-b border-slate-200 pb-2">
+            <button
+                class="tab-btn active nav-font px-6 py-3 rounded-t-xl text-lg font-bold transition-all text-jaipuria-blue border-b-4 border-jaipuria-accent"
+                data-tab="tab-overview">
+                Overview
+            </button>
+            <button
+                class="tab-btn nav-font px-6 py-3 rounded-t-xl text-lg font-bold transition-all text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300"
+                data-tab="tab-partners">
+                Global Partners
+            </button>
+            <button
+                class="tab-btn nav-font px-6 py-3 rounded-t-xl text-lg font-bold transition-all text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300"
+                data-tab="tab-immersion">
+                Immersion & Exchange
+            </button>
+            <button
+                class="tab-btn nav-font px-6 py-3 rounded-t-xl text-lg font-bold transition-all text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300"
+                data-tab="tab-voices">
+                Student Voices
+            </button>
+        </div>
+
+        <!-- TAB 1: OVERVIEW -->
+        <section id="tab-overview" class="tab-content active">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Chairperson Message -->
+                <div class="relative">
+                    <div class="absolute -top-6 -left-6 text-9xl text-slate-200/50 font-serif leading-none z-0">"</div>
+                    <div class="relative z-10 bg-white rounded-3xl p-8 shadow-soft border border-slate-100">
+                        <div class="flex items-center gap-6 mb-6">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+                                alt="Chairperson"
+                                class="w-24 h-24 rounded-full object-cover shadow-lg border-4 border-white">
+                            <div>
+                                <h3 class="text-2xl font-bold text-jaipuria-dark nav-font">Dr. Global Visionary</h3>
+                                <p class="text-jaipuria-accent font-medium">Chairperson, International Relations</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                            "At Jaipuria, we believe that modern business challenges require global perspectives. Our IR
+                            programs are designed to push students out of their comfort zones, immersing them in diverse
+                            cultures and global business practices to build the leaders of tomorrow."
+                        </p>
+                        <a href="/academic-policy"
+                            class="inline-flex items-center gap-2 text-jaipuria-blue font-semibold hover:text-jaipuria-accent transition-colors">
+                            <i class="fa-solid fa-file-pdf text-red-500"></i> View Academic Policy for IR
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4-Step Infographic -->
+                <div>
+                    <h2 class="text-3xl font-black text-jaipuria-dark mb-10 nav-font">Your Journey to the World</h2>
+                    <div
+                        class="space-y-8 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-jaipuria-blue before:to-jaipuria-accent">
+
+                        <!-- Step 1 -->
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div
+                                class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-jaipuria-blue shadow-lg z-10 group-hover:bg-jaipuria-blue group-hover:text-white transition-colors text-jaipuria-blue font-bold nav-font">
+                                1</div>
+                            <div
+                                class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] glass-card p-6 rounded-2xl shadow-sm hover:shadow-xl transition-shadow ml-4 md:ml-0 md:mr-8 md:group-odd:ml-8 md:group-odd:mr-0">
+                                <h4 class="text-xl font-bold text-jaipuria-dark mb-2 nav-font">Apply</h4>
+                                <p class="text-slate-600 text-sm">Choose your preferred partner university and submit
+                                    your statement of purpose.</p>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div
+                                class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-jaipuria-blue shadow-lg z-10 group-hover:bg-jaipuria-blue group-hover:text-white transition-colors text-jaipuria-blue font-bold nav-font">
+                                2</div>
+                            <div
+                                class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] glass-card p-6 rounded-2xl shadow-sm hover:shadow-xl transition-shadow ml-4 md:ml-0 md:mr-8 md:group-odd:ml-8 md:group-odd:mr-0">
+                                <h4 class="text-xl font-bold text-jaipuria-dark mb-2 nav-font">Select</h4>
+                                <p class="text-slate-600 text-sm">Clear the internal interview process and secure your
+                                    nomination.</p>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div
+                                class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-jaipuria-accent shadow-lg z-10 group-hover:bg-jaipuria-accent group-hover:text-white transition-colors text-jaipuria-accent font-bold nav-font">
+                                3</div>
+                            <div
+                                class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] glass-card p-6 rounded-2xl shadow-sm hover:shadow-xl transition-shadow ml-4 md:ml-0 md:mr-8 md:group-odd:ml-8 md:group-odd:mr-0">
+                                <h4 class="text-xl font-bold text-jaipuria-dark mb-2 nav-font">Fly</h4>
+                                <p class="text-slate-600 text-sm">Attend the pre-departure briefing, get your visa, and
+                                    board your flight!</p>
+                            </div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div
+                                class="flex items-center justify-center w-12 h-12 rounded-full bg-jaipuria-accent border-4 border-jaipuria-accent shadow-lg z-10 text-white font-bold nav-font">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div
+                                class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-gradient-to-br from-jaipuria-blue to-blue-800 p-6 rounded-2xl shadow-xl transition-shadow ml-4 md:ml-0 md:mr-8 md:group-odd:ml-8 md:group-odd:mr-0 text-white">
+                                <h4 class="text-xl font-bold mb-2 nav-font text-white">Earn Credits</h4>
+                                <p class="text-blue-100 text-sm">Study abroad, network globally, and transfer credits
+                                    seamlessly back to Jaipuria.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: GLOBAL PARTNERS -->
+        <section id="tab-partners" class="tab-content">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black text-jaipuria-dark mb-4 nav-font">Our Global Footprint</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Collaborating with top-tier institutions worldwide to bring
+                    you unparalleled academic excellence.</p>
+            </div>
+
+            <!-- Region: Europe -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-jaipuria-blue mb-6 border-b-2 border-slate-200 pb-2 inline-block"><i
+                        class="fa-solid fa-earth-europe mr-2 text-jaipuria-accent"></i> Europe</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 (Mandatory) -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
+                            <img src="https://logo.clearbit.com/rennes-sb.com"
+                                onerror="this.src='https://ui-avatars.com/api/?name=RSB&background=fff'" alt="Rennes SB"
+                                class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div>
+                            <div
+                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
+                                <span class="text-lg">🇫🇷</span> France
+                            </div>
+                            <h4 class="font-bold text-jaipuria-dark leading-tight">Rennes School of Business</h4>
+                        </div>
+                    </div>
+                    <!-- Placeholder EU Cards -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
+                            <img src="https://logo.clearbit.com/mbs-education.com"
+                                onerror="this.src='https://ui-avatars.com/api/?name=MBS&background=fff'"
+                                alt="Munich Business School" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div>
+                            <div
+                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
+                                <span class="text-lg">🇩🇪</span> Germany
+                            </div>
+                            <h4 class="font-bold text-jaipuria-dark leading-tight">Munich Business School</h4>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
+                            <img src="https://logo.clearbit.com/porto.pt"
+                                onerror="this.src='https://ui-avatars.com/api/?name=UP&background=fff'" alt="U Porto"
+                                class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div>
+                            <div
+                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
+                                <span class="text-lg">🇵🇹</span> Portugal
+                            </div>
+                            <h4 class="font-bold text-jaipuria-dark leading-tight">University of Porto</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Region: Asia-Pacific -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-jaipuria-blue mb-6 border-b-2 border-slate-200 pb-2 inline-block"><i
+                        class="fa-solid fa-earth-asia mr-2 text-jaipuria-accent"></i> Asia-Pacific</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 2 (Mandatory) -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
+                            <img src="https://logo.clearbit.com/tarc.edu.my"
+                                onerror="this.src='https://ui-avatars.com/api/?name=TAR&background=fff'" alt="TAR UMT"
+                                class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div>
+                            <div
+                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
+                                <span class="text-lg">🇲🇾</span> Malaysia
+                            </div>
+                            <h4 class="font-bold text-jaipuria-dark leading-tight">TAR UMT</h4>
+                        </div>
+                    </div>
+                    <!-- Card 3 (Mandatory) -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
+                            <img src="https://logo.clearbit.com/uow.edu.au"
+                                onerror="this.src='https://ui-avatars.com/api/?name=UOW&background=fff'" alt="UoW"
+                                class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div>
+                            <div
+                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
+                                <span class="text-lg">🇦🇺</span> Australia / Dubai
+                            </div>
+                            <h4 class="font-bold text-jaipuria-dark leading-tight">University of Wollongong</h4>
+                        </div>
+                    </div>
+                    <!-- Card 4 (Mandatory) -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
+                            <img src="https://logo.clearbit.com/whitireia.ac.nz"
+                                onerror="this.src='https://ui-avatars.com/api/?name=W&background=fff'" alt="Weltech"
+                                class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div>
+                            <div
+                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
+                                <span class="text-lg">🇳🇿</span> New Zealand
+                            </div>
+                            <h4 class="font-bold text-jaipuria-dark leading-tight">Weltech & Whitireia</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Region: Americas -->
+            <div class="mb-4">
+                <h3 class="text-2xl font-bold text-jaipuria-blue mb-6 border-b-2 border-slate-200 pb-2 inline-block"><i
+                        class="fa-solid fa-earth-americas mr-2 text-jaipuria-accent"></i> Americas</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-16 h-16 bg-slate-50 rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-slate-200">
+                            <img src="https://logo.clearbit.com/centennialcollege.ca"
+                                onerror="this.src='https://ui-avatars.com/api/?name=CC&background=fff'" alt="Centennial"
+                                class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div>
+                            <div
+                                class="text-xs text-slate-400 font-bold mb-1 uppercase tracking-wider flex items-center gap-1">
+                                <span class="text-lg">🇨🇦</span> Canada
+                            </div>
+                            <h4 class="font-bold text-jaipuria-dark leading-tight">Centennial College</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: IMMERSION & EXCHANGE -->
+        <section id="tab-immersion" class="tab-content">
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Card 1 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-2xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80"
+                            alt="Students"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-jaipuria-blue uppercase">
+                            Mandatory</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-jaipuria-dark mb-3 nav-font">Student Exchange</h3>
+                        <p class="text-slate-600 mb-6 flex-grow text-sm leading-relaxed">
+                            A credit-based semester abroad. Study at partner universities without paying extra tuition
+                            fees. Immerse yourself deeply in a new academic and cultural environment for 3-6 months.
+                        </p>
+                        <a href="/exchange-details"
+                            class="mt-auto block text-center w-full bg-slate-100 hover:bg-jaipuria-blue hover:text-white text-jaipuria-dark font-semibold py-3 rounded-xl transition-colors duration-300 nav-font">
+                            Know More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-2xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-2 relative">
+                    <div
+                        class="absolute -top-10 -right-10 w-24 h-24 bg-jaipuria-accent rounded-full blur-2xl opacity-20 z-0">
+                    </div>
+                    <div class="h-48 overflow-hidden relative z-10">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80"
+                            alt="Global City"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-jaipuria-accent/90 text-white px-3 py-1 rounded-full text-xs font-bold uppercase backdrop-blur-sm">
+                            Popular</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-jaipuria-dark mb-3 nav-font">Global Immersion</h3>
+                        <p class="text-slate-600 mb-6 flex-grow text-sm leading-relaxed">
+                            Short-term, high-impact industry visits spanning 1-2 weeks in hubs like Singapore, Dubai,
+                            and Europe. Experience global corporate mechanics firsthand through guided tours and expert
+                            talks.
+                        </p>
+                        <a href="/exchange-details"
+                            class="mt-auto block text-center w-full bg-slate-100 hover:bg-jaipuria-blue hover:text-white text-jaipuria-dark font-semibold py-3 rounded-xl transition-colors duration-300 nav-font">
+                            Know More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-2xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80" alt="Webinar"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-jaipuria-dark mb-3 nav-font">Faculty Exchange</h3>
+                        <p class="text-slate-600 mb-6 flex-grow text-sm leading-relaxed">
+                            Learn from the best minds globally. Our platform facilitates cross-border faculty teachings,
+                            joint research programs, and exclusive international webinars integrated into your
+                            curriculum.
+                        </p>
+                        <a href="/exchange-details"
+                            class="mt-auto block text-center w-full bg-slate-100 hover:bg-jaipuria-blue hover:text-white text-jaipuria-dark font-semibold py-3 rounded-xl transition-colors duration-300 nav-font">
+                            Know More
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 4: STUDENT VOICES (Reel Style) -->
+        <section id="tab-voices" class="tab-content">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black text-jaipuria-dark mb-4 nav-font">Life Beyond Borders</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Hear straight from our students who took the leap and
+                    transformed their careers.</p>
+            </div>
+
+            <!-- Masonry / Grid Reel Setup -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+
+                <!-- Reel 1 -->
+                <div
+                    class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&q=80"
+                        alt="Student in Paris"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 text-white">
+                            <i class="fa-solid fa-quote-left text-jaipuria-accent mb-2 text-xl"></i>
+                            <p class="text-sm font-medium leading-snug mb-3">"Studying at Rennes completely changed how
+                                I view global marketing. The diversity in the classroom was insane!"</p>
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-jaipuria-accent flex items-center justify-center font-bold text-xs nav-font">
+                                    AA</div>
+                                <div>
+                                    <h5 class="text-xs font-bold nav-font">Aarav Agarwal</h5>
+                                    <p class="text-[10px] text-slate-300">Exchange @ France</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reel 2 -->
+                <div
+                    class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 md:mt-8">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80"
+                        alt="Student in Malaysia"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 text-white">
+                            <i class="fa-solid fa-quote-left text-jaipuria-accent mb-2 text-xl"></i>
+                            <p class="text-sm font-medium leading-snug mb-3">"The immersion program at TAR UMT gave me
+                                real-time exposure to ASEAN economies. Unforgettable."</p>
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-jaipuria-blue flex items-center justify-center font-bold text-xs nav-font">
+                                    NK</div>
+                                <div>
+                                    <h5 class="text-xs font-bold nav-font">Neha Kapoor</h5>
+                                    <p class="text-[10px] text-slate-300">Immersion @ Malaysia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reel 3 -->
+                <div
+                    class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80"
+                        alt="Student in Campus"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 text-white">
+                            <i class="fa-solid fa-quote-left text-jaipuria-accent mb-2 text-xl"></i>
+                            <p class="text-sm font-medium leading-snug mb-3">"UoW Dubai's infrastructure and the mix of
+                                cultures helped me secure an international placement."</p>
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center font-bold text-xs nav-font">
+                                    RS</div>
+                                <div>
+                                    <h5 class="text-xs font-bold nav-font">Rahul Singh</h5>
+                                    <p class="text-[10px] text-slate-300">Exchange @ Dubai</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reel 4 -->
+                <div
+                    class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 md:mt-8">
+                    <img src="https://images.unsplash.com/photo-1525926472810-2521877b6381?w=600&q=80"
+                        alt="Student Group"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
+                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 text-white">
+                            <i class="fa-solid fa-quote-left text-jaipuria-accent mb-2 text-xl"></i>
+                            <p class="text-sm font-medium leading-snug mb-3">"The support from Jaipuria's IR desk made
+                                my transition to New Zealand completely seamless."</p>
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center font-bold text-xs nav-font">
+                                    SM</div>
+                                <div>
+                                    <h5 class="text-xs font-bold nav-font">Simran Malhotra</h5>
+                                    <p class="text-[10px] text-slate-300">Exchange @ NZ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 4. LEAD CAPTURE SECTION -->
+    <section class="bg-jaipuria-dark py-20 relative overflow-hidden">
+        <!-- Abstract Shapes -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div
+                class="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-jaipuria-blue blur-[120px] opacity-40">
+            </div>
+            <div
+                class="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-jaipuria-accent blur-[120px] opacity-20">
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-5xl font-black text-white mb-4 nav-font">Ready to Step Out?</h2>
+                    <p class="text-slate-300">Drop your details below and our IR coordinators will get in touch with
+                        you.</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <!-- <label class="block text-sm font-medium text-slate-300 mb-2">Full Name</label> -->
+                            <input type="text" placeholder="Full Name"
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-jaipuria-accent transition-all">
+                        </div>
+                        <div>
+                            <!-- <label class="block text-sm font-medium text-slate-300 mb-2">Email Address</label> -->
+                            <input type="email" placeholder="Email Address"
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-jaipuria-accent transition-all">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <!-- <label class="block text-sm font-medium text-slate-300 mb-2">Phone Number</label> -->
+                            <input type="tel" placeholder="Phone Number"
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-jaipuria-accent transition-all">
+                        </div>
+                        <div>
+                            <!-- <label class="block text-sm font-medium text-slate-300 mb-2">Interested In</label> -->
+                            <select
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-slate-300 focus:outline-none focus:ring-2 focus:ring-jaipuria-accent transition-all [&>option]:text-jaipuria-dark">
+                                <option value="" disabled selected>Interested In</option>
+                                <option value="exchange">Student Exchange (Semester Abroad)</option>
+                                <option value="immersion">Global Immersion (Short Term)</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button"
+                        class="w-full bg-gradient-to-r from-jaipuria-accent to-amber-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-amber-500/50 hover:-translate-y-1 transition-all duration-300 nav-font mt-4">
+                        Request Callback
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <!-- <img src="https://logo.clearbit.com/jaipuria.ac.in"
+                        alt="Jaipuria Logo" class="w-10 h-10 object-contain rounded-full bg-white">
+                    <span class="nav-font text-white font-bold text-lg leading-tight">
+                        JAIPURIA <br><span class="text-xs text-jaipuria-accent">Centre for International
+                            Relations</span>
+                    </span> -->
+                    <a href="https://www.jaipuria.ac.in/" class="flex items-center gap-3 group bg-white">
+                        <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Jaipuria-Logo.jpg"
+                            alt="Jaipuria Logo"
+                            class="w-40 h-auto object-contain group-hover:scale-110 transition-transform duration-300 p-3">
+                    </a>
+                </div>
+                <p class="text-sm max-w-sm mb-6 leading-relaxed">
+                    Empowering students with global perspectives. Connecting Jaipuria to the world's leading business
+                    schools.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-jaipuria-accent hover:text-white transition-colors"><i
+                            class="fa-brands fa-linkedin-in text-sm"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-jaipuria-accent hover:text-white transition-colors"><i
+                            class="fa-brands fa-twitter text-sm"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-jaipuria-accent hover:text-white transition-colors"><i
+                            class="fa-brands fa-instagram text-sm"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 nav-font">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-jaipuria-accent transition-colors">About IR</a></li>
+                    <li><a href="#" class="hover:text-jaipuria-accent transition-colors">Academic Policies</a></li>
+                    <li><a href="#" class="hover:text-jaipuria-accent transition-colors">Download Brochure</a></li>
+                    <li><a href="#" class="hover:text-jaipuria-accent transition-colors">Contact IR Desk</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 nav-font">Campuses</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>Lucknow</li>
+                    <li>Noida</li>
+                    <li>Jaipur</li>
+                    <li>Indore</li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-slate-800 text-xs text-center flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2026 Jaipuria Institute of Management. All rights reserved.</p>
+            <div class="space-x-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVITY LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('nav-scrolled');
+                } else {
+                    navbar.classList.remove('nav-scrolled');
+                }
+            });
+
+            // 2. Tab Navigation System
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active from all
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active', 'text-jaipuria-blue', 'border-jaipuria-accent');
+                        b.classList.add('text-slate-400', 'border-transparent');
+                    });
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active to clicked
+                    btn.classList.add('active', 'text-jaipuria-blue', 'border-jaipuria-accent');
+                    btn.classList.remove('text-slate-400', 'border-transparent');
+
+                    const targetId = btn.getAttribute('data-tab');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+
+            // 3. Counter Animation for Stats Strip
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200; // The lower the slower
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(animateCounters, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            }
+
+            // Intersection Observer to start counters when visible
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe the parent container of counters
+            const statsContainer = document.querySelector('.glass-panel');
+            if (statsContainer) observer.observe(statsContainer);
+
+        });
+    </script>
+</body>
+
+</html>

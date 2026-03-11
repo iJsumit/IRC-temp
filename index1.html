@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Opportunities | Jaipuria Institute of Management</title>
+    <!-- Tailwind CSS CDN for premium layout (WordPress me Elementor se replace ho jayega) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat for that B-School premium look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        // Tailwind config brand colors set karne ke liye
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#f37021', // Jaipuria Orange
+                        dark: '#111827',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom CSS jo WordPress me aaram se copy ho jayegi */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Hero background styling */
+        .hero-bg {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.8)), url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=2020&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Interactive Map Tooltip CSS */
+        .map-container {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+        }
+
+        .pulse-dot {
+            width: 15px;
+            height: 15px;
+            background-color: #f37021;
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+            box-shadow: 0 0 0 rgba(243, 112, 33, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(243, 112, 33, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(243, 112, 33, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(243, 112, 33, 0);
+            }
+        }
+
+        .jim-map-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 260px;
+            border-left: 4px solid #f37021;
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        .pulse-dot:hover .jim-map-tooltip {
+            visibility: visible;
+            opacity: 1;
+            bottom: 120%;
+        }
+
+        /* Timeline CSS */
+        .timeline-step {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            bottom: -30px;
+            width: 2px;
+            background: #e5e7eb;
+        }
+
+        .timeline-step:last-child::before {
+            display: none;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: #f37021;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            z-index: 10;
+        }
+
+        /* Tab Transition */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Navbar Mockup -->
+    <nav class="bg-white shadow-md py-4 px-8 fixed w-full z-50 flex justify-between items-center top-0">
+        <div class="text-2xl font-bold text-dark tracking-tighter">
+            JAIPURIA <span class="text-brand text-sm align-middle">B-SCHOOL</span>
+        </div>
+        <div class="hidden md:flex space-x-6 text-sm font-semibold text-gray-600">
+            <a href="#" class="hover:text-brand transition">Programs</a>
+            <a href="#" class="hover:text-brand transition">Campuses</a>
+            <a href="#" class="text-brand">International Relations</a>
+            <a href="#" class="hover:text-brand transition">Placements</a>
+        </div>
+        <button class="bg-brand text-white px-6 py-2 rounded font-bold text-sm hover:bg-orange-600 transition">Apply
+            Now</button>
+    </nav>
+
+    <!-- Phase 1: Hero Section (The "Aukaat" Flex) -->
+    <section class="relative h-screen flex items-center justify-center hero-bg pt-20">
+        <div class="text-center px-4 max-w-4xl mx-auto z-10">
+            <span class="text-brand font-bold tracking-widest uppercase text-sm mb-4 block animate-bounce">International
+                Relations</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+                Your Classroom is <br> <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-yellow-400">Not Limited to
+                    India.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 font-light">Experience world-class education with our
+                partner universities across the globe. Take your career to the international stage.</p>
+
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+                <a href="#explore"
+                    class="bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-600 hover:shadow-lg hover:shadow-brand/50 transition transform hover:-translate-y-1">
+                    Explore Programs
+                </a>
+                <a href="#"
+                    class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-dark transition">
+                    <i class="fa-solid fa-download mr-2"></i> Global Brochure
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 2: The Authority Bar (Stats Counters) -->
+    <section class="bg-white shadow-xl rounded-xl mx-4 md:mx-auto max-w-6xl -mt-16 relative z-20 p-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <!-- Count-up logic niche JS me hai -->
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-dark mb-2"><span class="counter"
+                        data-target="15">0</span>+</div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Partner Universities</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-dark mb-2"><span class="counter"
+                        data-target="10">0</span>+</div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Countries Explored</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-dark mb-2"><span class="counter"
+                        data-target="500">0</span>+</div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Students Flown</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-brand mb-2"><span class="counter"
+                        data-target="100">0</span>%</div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Credit Transfer</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3: The Showstopper (Interactive Map Placeholder) -->
+    <section id="explore" class="py-24 bg-dark text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Global Footprint</h2>
+                <p class="text-gray-400 text-lg">Hover over the map to discover our international partner institutions.
+                </p>
+            </div>
+
+            <!-- Map Container (Relative positioning for dots) -->
+            <div class="relative w-full h-[400px] md:h-[600px] map-container mx-auto">
+
+                <!-- Dot 1: France (Asli Partner) -->
+                <div class="pulse-dot" style="top: 30%; left: 48%;">
+                    <!-- Tooltip HTML -->
+                    <div class="jim-map-tooltip text-gray-800">
+                        <i class="fa-solid fa-building-columns text-3xl text-brand mr-4"></i>
+                        <div class="flex flex-col text-left">
+                            <h4 class="m-0 text-[15px] font-bold text-dark leading-tight">Rennes School of Business</h4>
+                            <p class="m-0 mt-1 text-xs text-gray-500 font-medium">Student Exchange Program</p>
+                            <span class="text-[11px] text-brand font-bold uppercase tracking-wider mt-1">📍
+                                France</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dot 2: Malaysia (Asli Partner) -->
+                <div class="pulse-dot" style="top: 55%; left: 78%;">
+                    <div class="jim-map-tooltip text-gray-800">
+                        <i class="fa-solid fa-graduation-cap text-3xl text-brand mr-4"></i>
+                        <div class="flex flex-col text-left">
+                            <h4 class="m-0 text-[15px] font-bold text-dark leading-tight">TAR University</h4>
+                            <p class="m-0 mt-1 text-xs text-gray-500 font-medium">Faculty Exchange & Immersion</p>
+                            <span class="text-[11px] text-brand font-bold uppercase tracking-wider mt-1">📍
+                                Malaysia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dot 3: UAE -->
+                <div class="pulse-dot" style="top: 45%; left: 63%;">
+                    <div class="jim-map-tooltip text-gray-800">
+                        <i class="fa-solid fa-earth-asia text-3xl text-brand mr-4"></i>
+                        <div class="flex flex-col text-left">
+                            <h4 class="m-0 text-[15px] font-bold text-dark leading-tight">Dubai Immersion</h4>
+                            <p class="m-0 mt-1 text-xs text-gray-500 font-medium">Industry Visit & Workshops</p>
+                            <span class="text-[11px] text-brand font-bold uppercase tracking-wider mt-1">📍 UAE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dot 4: New Zealand (Asli Partner) -->
+                <div class="pulse-dot" style="top: 75%; left: 90%;">
+                    <div class="jim-map-tooltip text-gray-800">
+                        <i class="fa-solid fa-chalkboard-user text-3xl text-brand mr-4"></i>
+                        <div class="flex flex-col text-left">
+                            <h4 class="m-0 text-[15px] font-bold text-dark leading-tight">Weltec & Whitireia</h4>
+                            <p class="m-0 mt-1 text-xs text-gray-500 font-medium">Faculty Exchange Program</p>
+                            <span class="text-[11px] text-brand font-bold uppercase tracking-wider mt-1">📍 New
+                                Zealand</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 4: Product Segregation (Clean Tabs with Real Content) -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-dark mb-4">Choose Your Path</h2>
+                <p class="text-gray-600">Tailor-made international experiences for PGDM & FPM students.</p>
+            </div>
+
+            <!-- Tab Buttons (Added 4th Tab for Guest Sessions) -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="openTab('exchange')"
+                    class="tab-btn px-6 py-3 rounded-full font-bold text-sm transition bg-brand text-white shadow-md"
+                    id="btn-exchange">Student Exchange</button>
+                <button onclick="openTab('immersion')"
+                    class="tab-btn px-6 py-3 rounded-full font-bold text-sm transition bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                    id="btn-immersion">Global Immersion</button>
+                <button onclick="openTab('faculty')"
+                    class="tab-btn px-6 py-3 rounded-full font-bold text-sm transition bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                    id="btn-faculty">Faculty Exchange</button>
+                <button onclick="openTab('guest')"
+                    class="tab-btn px-6 py-3 rounded-full font-bold text-sm transition bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                    id="btn-guest">Global Guest Sessions</button>
+            </div>
+
+            <!-- Tab Content 1: Exchange (Real Content) -->
+            <div id="exchange" class="tab-content active bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold text-dark mb-4">Student Exchange Programs</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Jaipuria Institute of Management offers robust
+                            student exchange programs with prestigious international institutions. We aim to provide
+                            cross-cultural exposure and a truly global academic perspective. Students get the
+                            opportunity to study a trimester abroad with complete credit transfer.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Partnering with <b>Rennes School of
+                                    Business (France)</b></li>
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Collaborations in <b>Malaysia, New
+                                    Zealand & more</b>.</li>
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Study under international faculty and
+                                build a global network.</li>
+                        </ul>
+                        <button
+                            class="text-brand font-bold border-b-2 border-brand pb-1 hover:text-dark hover:border-dark transition">View
+                            All Partner Institutes &rarr;</button>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop"
+                            alt="Students abroad" class="rounded-xl shadow-md w-full object-cover h-80">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 2: Immersion (Real Content) -->
+            <div id="immersion" class="tab-content bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold text-dark mb-4">Global Immersion Programs</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Our Global Immersion Programs go beyond
+                            traditional classroom learning. Students are taken on international study tours to
+                            experience global business environments, operations, and cultural nuances firsthand.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Destinations include <b>Singapore,
+                                    Malaysia, UAE, Sri Lanka, and Europe</b>.</li>
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Guided industry visits to global
+                                manufacturing hubs and MNCs.</li>
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Cross-cultural academic sessions and
+                                workshops.</li>
+                        </ul>
+                        <button
+                            class="text-brand font-bold border-b-2 border-brand pb-1 hover:text-dark hover:border-dark transition">Download
+                            Immersion Itinerary &rarr;</button>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1000&auto=format&fit=crop"
+                            alt="Dubai corporate" class="rounded-xl shadow-md w-full object-cover h-80">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 3: Faculty (Real Content) -->
+            <div id="faculty" class="tab-content bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold text-dark mb-4">Faculty Exchange Programs</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">To ensure our pedagogy remains globally relevant,
+                            our faculty members actively participate in exchange programs and collaborative research
+                            with renowned international universities.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Exchanges with <b>TAR University
+                                    (Malaysia)</b></li>
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Collaborations with <b>Weltec &
+                                    Whitireia (New Zealand)</b></li>
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Joint research projects and global
+                                case study development.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1577415124269-b9140d52d19a?q=80&w=1000&auto=format&fit=crop"
+                            alt="Faculty" class="rounded-xl shadow-md w-full object-cover h-80">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 4: Guest Sessions (New Addition from Real Content) -->
+            <div id="guest" class="tab-content bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold text-dark mb-4">Global Guest Sessions</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">We bring the world to our classrooms. Throughout
+                            the academic year, we host interactive webinars, masterclasses, and guest lectures by
+                            international industry experts and academicians.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Insights into global market trends
+                                and international business strategies.</li>
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> Live Q&A sessions with leaders from
+                                multinational companies.</li>
+                            <li class="flex items-center text-gray-700"><i
+                                    class="fa-solid fa-check text-brand mr-3"></i> High-impact networking opportunities.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop"
+                            alt="Guest Lecture" class="rounded-xl shadow-md w-full object-cover h-80">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 5 & 6: Timeline & Social Proof Container -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
+
+            <!-- The Takeoff Timeline -->
+            <div>
+                <h2 class="text-3xl font-bold text-dark mb-8">The Takeoff Process</h2>
+                <div class="pl-4">
+                    <div class="timeline-step">
+                        <div class="timeline-icon"><i class="fa-solid fa-1"></i></div>
+                        <h4 class="text-xl font-bold text-dark">Get Selected</h4>
+                        <p class="text-gray-500 text-sm mt-1">Clear the internal academic screening based on your
+                            trimester grades and interview.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-icon"><i class="fa-solid fa-2"></i></div>
+                        <h4 class="text-xl font-bold text-dark">Documentation</h4>
+                        <p class="text-gray-500 text-sm mt-1">Our International Relations office assists you with Visa
+                            processing and partner university paperwork.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-icon"><i class="fa-solid fa-3"></i></div>
+                        <h4 class="text-xl font-bold text-dark">Pre-Departure Briefing</h4>
+                        <p class="text-gray-500 text-sm mt-1">Attend cultural orientation and academic mapping sessions
+                            before you fly.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                        <h4 class="text-xl font-bold text-dark">Takeoff!</h4>
+                        <p class="text-gray-500 text-sm mt-1">Board your flight to your new global classroom.</p>
+                    </div>
+                </div>
+
+                <!-- Lead Magnet -->
+                <div class="mt-12 bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <h4 class="font-bold text-dark mb-2">Want to see a real itinerary?</h4>
+                    <p class="text-sm text-gray-500 mb-4">Download the exact schedule of our latest Singapore Immersion
+                        program.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter your email"
+                            class="px-4 py-2 w-full rounded-l border border-gray-300 focus:outline-none focus:border-brand">
+                        <button class="bg-dark text-white px-4 py-2 rounded-r hover:bg-brand transition">Get
+                            PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- "The Gram" / Social Proof -->
+            <div>
+                <div class="flex justify-between items-end mb-8">
+                    <h2 class="text-3xl font-bold text-dark">#JaipuriaGoesGlobal</h2>
+                    <a href="#" class="text-brand font-semibold text-sm hover:underline"><i
+                            class="fa-brands fa-instagram mr-1"></i> Follow Us</a>
+                </div>
+                <!-- Instagram Masonry Mockup -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="relative group overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=500&auto=format&fit=crop"
+                            class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                            <i class="fa-brands fa-instagram text-3xl"></i></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-xl row-span-2">
+                        <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=500&auto=format&fit=crop"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                            <i class="fa-solid fa-play text-3xl"></i></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=500&auto=format&fit=crop"
+                            class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                            <i class="fa-brands fa-instagram text-3xl"></i></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sticky Mobile CTA & Footer -->
+    <footer class="bg-dark text-white py-12 pb-24 md:pb-12 text-center">
+        <h2 class="text-2xl font-bold mb-4">Ready to expand your horizons?</h2>
+        <p class="text-gray-400 mb-6">Admissions are open for PGDM & FPM batches.</p>
+        <button class="bg-brand text-white px-8 py-3 rounded font-bold hover:bg-orange-600 transition">Apply Now for
+            2025</button>
+    </footer>
+
+    <!-- Mobile Sticky Bar (Visible only on small screens) -->
+    <div
+        class="fixed bottom-0 w-full bg-white shadow-[0_-4px_10px_rgba(0,0,0,0.1)] p-3 flex justify-between items-center md:hidden z-50">
+        <div>
+            <div class="text-xs text-gray-500 font-semibold uppercase">Next Batch</div>
+            <div class="text-sm font-bold text-dark">Admissions Open</div>
+        </div>
+        <button class="bg-brand text-white px-6 py-2 rounded font-bold text-sm">Apply Now</button>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // --- 1. Tabs Logic (Program Segregation ke liye) ---
+        function openTab(tabName) {
+            // Sabhi tab contents hide karo
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Sabhi buttons se active color (brand) hatao
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-gray-600');
+            });
+
+            // Sirf click kiye hue tab ko show karo aur button color change karo
+            document.getElementById(tabName).classList.add('active');
+            const activeBtn = document.getElementById('btn-' + tabName);
+            activeBtn.classList.remove('bg-white', 'text-gray-600');
+            activeBtn.classList.add('bg-brand', 'text-white', 'shadow-md');
+        }
+
+        // --- 2. Number Counter Animation Logic ---
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // Counter speed (jitna kam, utna fast)
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed; // Increment step
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Scroll observer takii jab user stat section pe aaye tabhi counter start ho
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounters();
+                    observer.disconnect(); // Ek baar chalne ke baad rok do
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe the stats section
+        const statsSection = document.querySelector('.grid-cols-2');
+        if (statsSection) observer.observe(statsSection);
+    </script>
+</body>
+
+</html>
