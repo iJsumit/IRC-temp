@@ -1,911 +1,1024 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>International Relations | Jaipuria Institute of Management</title>
-    <link rel="icon" href="https://www.jaipuria.ac.in/wp-content/uploads/2022/05/favicon.png">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts: Montserrat (Headings) & Inter (Body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800;900&display=swap"
+    <!-- Fonts aur Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind Config & Custom CSS -->
+    <!-- Tailwind CSS CDN setup -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
                     colors: {
-                        jaipuria: {
-                            blue: '#1e3a8a', // blue-900
-                            light: '#3b82f6', // blue-500
-                            accent: '#f59e0b', // amber-500
-                            dark: '#0f172a', // slate-900
-                        }
+                        primary: '#356C8E', // Jaipuria Blue
+                        secondary: '#4D3164', // Jaipuria Purple
+                        accent: '#D67B19', // Jaipuria Orange
+                        lightbg: '#F8FAFC'
                     },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Base & Typography */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .nav-font {
+        body {
             font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
         }
 
-        /* Glassmorphism Utilities */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        html {
+            scroll-behavior: smooth;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+        .hero-banner {
+            background-image: linear-gradient(to right, rgba(77, 49, 100, 0.85), rgba(53, 108, 142, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* Tab Transitions */
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #D67B19;
+            margin-top: 16px;
+        }
+
+        .section-heading-center::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #D67B19;
+            margin: 16px auto 0;
+        }
+
+        /* Hover effects for cards */
+        .hover-card-zoom img {
+            transition: transform 0.6s ease;
+        }
+
+        .hover-card-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Tabs Styling */
+        .tab-btn {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: #356C8E;
+            font-weight: 700;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #D67B19;
+        }
+
         .tab-content {
             display: none;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.5s ease-out;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
         .tab-content.active {
             display: block;
-            opacity: 1;
-            transform: translateY(0);
         }
 
-        /* Nav Transition */
-        #navbar {
-            transition: all 0.3s ease;
+        /* Testimonial slider */
+        .testimonial-slide {
+            display: none;
         }
 
-        .nav-scrolled {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.6s ease-in-out;
         }
 
-        .nav-scrolled .nav-link {
-            color: #1e3a8a !important;
-        }
-
-        /* Image Overlays */
-        .gradient-overlay {
-            background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.1) 100%);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        /* Interactive Map Background */
-        .map-container {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.8;
-        }
-
-        /* Pulsing Dots CSS */
-        .pulse-dot {
-            width: 15px;
-            height: 15px;
-            background-color: #f37021;
-            /* Jaipuria Orange */
-            border-radius: 50%;
-            position: absolute;
-            cursor: pointer;
-            box-shadow: 0 0 0 rgba(243, 112, 33, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(243, 112, 33, 0.7);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
             }
 
-            70% {
-                box-shadow: 0 0 0 15px rgba(243, 112, 33, 0);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(243, 112, 33, 0);
-            }
-        }
-
-        /* Tooltip Hover Box CSS */
-        .jim-map-tooltip {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            bottom: 150%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            width: 260px;
-            border-left: 4px solid #f37021;
-            transition: all 0.3s ease;
-            z-index: 50;
-        }
-
-        /* Tooltip Show on Hover */
-        .pulse-dot:hover .jim-map-tooltip {
-            visibility: visible;
-            opacity: 1;
-            bottom: 120%;
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-jaipuria-accent selection:text-white">
+<body class="bg-gray-50 text-gray-800">
 
-    <!-- 1. NAVIGATION -->
-    <nav id="navbar"
-        class="fixed w-full z-50 top-0 py-4 px-6 bg-white md:px-12 flex justify-between items-center transition-all">
-        <!-- Logo -->
-        <a href="https://www.jaipuria.ac.in/" class="flex items-center gap-3 group">
-            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Jaipuria-Logo.jpg" alt="Jaipuria Logo"
-                class="w-40 h-auto object-contain group-hover:scale-110 transition-transform duration-300">
-        </a>
-
-        <!-- Desktop Links -->
-        <div class="hidden lg:flex items-center space-x-8">
-            <a href="#overview"
-                class="nav-link nav-font text-dark font-bold hover:text-jaipuria-accent text-sm tracking-wide transition-colors">Overview</a>
-            <a href="#partners"
-                class="nav-link nav-font text-dark font-bold hover:text-jaipuria-accent text-sm tracking-wide transition-colors">Global
-                Partners</a>
-            <a href="#programs"
-                class="nav-link nav-font text-dark font-bold hover:text-jaipuria-accent text-sm tracking-wide transition-colors">Immersion</a>
-            <a href="#voices"
-                class="nav-link nav-font text-dark font-bold hover:text-jaipuria-accent text-sm tracking-wide transition-colors">Student
-                Voices</a>
+    <!-- Top Bar -->
+    <div class="bg-secondary text-white py-2 text-xs hidden md:block border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex gap-6 items-center">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-envelope text-accent"></i>
+                    dean.ir@jaipuria.ac.in</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-handshake text-accent"></i> Connect for MoU
+                    & Exchange</span>
+            </div>
+            <div class="flex gap-5 font-medium tracking-wide">
+                <a href="#" class="hover:text-accent transition">Alumni</a>
+                <a href="#" class="hover:text-accent transition">Campuses</a>
+                <a href="#" class="hover:text-accent transition">Library</a>
+            </div>
         </div>
+    </div>
 
-        <!-- CTA -->
-        <a href="#"
-            class="openLeadPopup nav-font bg-gradient-to-r from-jaipuria-accent to-amber-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all duration-300">
-            Apply Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-        </a>
-    </nav>
+    <!-- Main Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-2xl shadow-inner">
+                        J</div>
+                    <div class="flex flex-col">
+                        <span
+                            class="font-bold text-secondary leading-tight text-xl tracking-tight uppercase">Jaipuria</span>
+                        <span class="text-[10px] text-primary font-bold tracking-widest uppercase">Institute of
+                            Management</span>
+                    </div>
+                </div>
 
-    <!-- 2. HERO SECTION -->
-    <header class="relative w-full h-[30vh] md:h-[50vh] pt-16 md:pt-20 flex items-center justify-center">
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center gap-8 font-semibold text-sm text-gray-700">
+                    <a href="#overview" class="hover:text-primary transition">Overview</a>
+                    <a href="#destinations" class="hover:text-primary transition">Campuses</a>
+                    <a href="#outbound" class="hover:text-primary transition">Programs</a>
+                    <a href="#partners" class="hover:text-primary transition">Global Partners</a>
+                    <a href="#iah" class="hover:text-primary transition">Intl. at Home</a>
+                    <a href="#contact"
+                        class="bg-primary text-white px-6 py-2.5 rounded-sm hover:bg-secondary transition shadow-md uppercase tracking-wide text-xs">Partner
+                        With Us</a>
+                </nav>
 
-        <!-- Background -->
-        <div class="absolute inset-0 -z-10">
-            <img src="hero.jpg" alt="Global Campus" class="w-full h-full object-cover object-center">
-
-            <!-- Overlay -->
-            <div
-                class="absolute inset-0 bg-gradient-to-r from-jaipuria-blue/95 via-jaipuria-blue/80 to-slate-900/70 overflow-hidden">
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Hero Content -->
-        <div class="relative text-center px-4 max-w-5xl mx-auto">
-
-            <!-- <span
-                class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-jaipuria-accent font-semibold text-sm tracking-widest mb-6 uppercase">
-                Centre for International Relations
-            </span> -->
-
-            <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6 drop-shadow-lg">
-                Take Your Career <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-jaipuria-accent to-amber-300">
-                    Global.
-                </span>
-            </h1>
-
-            <!-- <p class="text-base md:text-xl text-slate-200 font-light mb-8 max-w-3xl mx-auto leading-relaxed">
-                Transformative academic exchanges, global immersion, and cross-disciplinary research across 15+
-                countries. Expand your horizons.
-            </p> -->
-
-            <!-- <div class="flex flex-col sm:flex-row justify-center gap-4">
-
-                <button onclick="document.getElementById('core-ui').scrollIntoView({behavior: 'smooth'})"
-                    class="nav-font bg-jaipuria-accent hover:bg-amber-400 text-jaipuria-dark px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-amber-500/40 hover:-translate-y-1 transition-all duration-300">
-                    Explore Programs
-                </button>
-
-                <a href="/brochure"
-                    class="nav-font bg-transparent border-2 border-white/50 hover:border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i> Download IR Brochure
-                </a>
-
-            </div> -->
-        </div>
-
-
-        <!-- Stats Strip -->
-        <!-- <div class="absolute left-1/2 -bottom-14 -translate-x-1/2 w-[95%] max-w-5xl"> -->
-        <div class="absolute left-[48%] md:left-1/2 -bottom-16 -translate-x-1/2 w-[95%] max-w-5xl">
-
-            <div
-                class="glass-panel rounded-3xl p-6 md:p-8 flex flex-row justify-around items-center gap-8 shadow-glass">
-
-                <div class="text-center">
-                    <div class="text-2xl md:text-5xl font-black text-white mb-1 counter" data-target="50">0</div>
-                    <div class="text-[#001E51] font-bold tracking-wide uppercase text-md">Global Partners</div>
-                </div>
-
-                <div class="hidden md:block w-px h-16 bg-white/20"></div>
-
-                <div class="text-center">
-                    <div class="text-2xl md:text-5xl font-black text-white mb-1">
-                        <span class="counter" data-target="15">0</span>+
-                    </div>
-                    <div class="text-[#001E51] font-bold tracking-wide uppercase text-md">Countries</div>
-                </div>
-
-                <div class="hidden md:block w-px h-16 bg-white/20"></div>
-
-                <div class="text-center">
-                    <div class="text-2xl md:text-5xl font-black text-white mb-1">
-                        <span class="counter" data-target="100">0</span>+
-                    </div>
-                    <div class="text-[#001E51] font-bold tracking-wide uppercase text-md">Exchanges Yearly</div>
-                </div>
-
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t absolute w-full left-0 shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2 font-semibold text-sm">
+                <a href="#overview" class="block px-3 py-3 border-b border-gray-100 hover:text-primary">Overview</a>
+                <a href="#destinations" class="block px-3 py-3 border-b border-gray-100 hover:text-primary">Campuses</a>
+                <a href="#outbound" class="block px-3 py-3 border-b border-gray-100 hover:text-primary">Programs</a>
+                <a href="#partners" class="block px-3 py-3 border-b border-gray-100 hover:text-primary">Global
+                    Partners</a>
+                <a href="#contact" class="block px-3 py-3 text-accent uppercase">Partner With Us</a>
             </div>
-
         </div>
-
     </header>
 
-    <!-- 3. CORE UI: TAB-BASED NAVIGATION -->
-    <main id="core-ui" class="pt-20 md:pt-30 pb-20 px-4 md:px-12 max-w-7xl mx-auto relative z-10">
-
-        <!-- Tab Headers -->
-        <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-16 border-b border-slate-200 pb-6">
-
-            <button
-                class="tab-btn active nav-font px-6 py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 text-jaipuria-blue border-b-4 border-jaipuria-accent bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2"
-                data-tab="tab-overview">
-                <i class="fa-solid fa-globe"></i>
-                Overview
-            </button>
-
-            <button
-                class="tab-btn nav-font px-6 py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300 bg-white/70 hover:bg-white shadow-sm hover:shadow-md flex items-center gap-2"
-                data-tab="tab-partners">
-                <i class="fa-solid fa-handshake"></i>
-                Global Partners
-            </button>
-
-            <button
-                class="tab-btn nav-font px-6 py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300 bg-white/70 hover:bg-white shadow-sm hover:shadow-md flex items-center gap-2"
-                data-tab="tab-immersion">
-                <i class="fa-solid fa-plane-departure"></i>
-                Immersion & Exchange
-            </button>
-
-            <button
-                class="tab-btn nav-font px-6 py-3 rounded-full text-base md:text-lg font-bold transition-all duration-300 text-slate-400 hover:text-jaipuria-blue border-b-4 border-transparent hover:border-slate-300 bg-white/70 hover:bg-white shadow-sm hover:shadow-md flex items-center gap-2"
-                data-tab="tab-voices">
-                <i class="fa-solid fa-graduation-cap"></i>
-                Student Voices
-            </button>
-
-        </div>
-
-        <!-- TAB 1: OVERVIEW -->
-        <section id="tab-overview" class="tab-content active">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Chairperson Message -->
-                <div class="relative lg:sticky lg:top-28 self-start lg:pr-8">
-                    <div class="absolute -top-6 -left-6 text-9xl text-slate-200/50 font-serif leading-none z-0">"</div>
-                    <div class="relative z-10 bg-white rounded-3xl p-8 shadow-soft border border-slate-100">
-                        <div class="flex items-center gap-6 mb-6">
-                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2022/09/Dr.-Pallavi-Srivastava-1.jpg"
-                                alt="Chairperson"
-                                class="w-24 h-24 rounded-full object-cover shadow-lg border-4 border-white">
-                            <div>
-                                <h3 class="text-2xl font-bold text-jaipuria-dark nav-font">Dr. Pallavi Shrivastava</h3>
-                                <p class="text-jaipuria-accent font-medium">Dean, International Relations</p>
-                            </div>
-                        </div>
-                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
-                            "At Jaipuria, we believe that modern business challenges require global perspectives. Our IR
-                            programs are designed to push students out of their comfort zones, immersing them in diverse
-                            cultures and global business practices to build the leaders of tomorrow."
-                        </p>
-                        <a href="/academic-policy"
-                            class="inline-flex items-center gap-2 text-jaipuria-blue font-semibold hover:text-jaipuria-accent transition-colors">
-                            <i class="fa-solid fa-file-pdf text-red-500"></i> View Academic Policy for IR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 4-Step Infographic -->
-                <div>
-                    <h2 class="text-3xl font-black text-jaipuria-dark mb-10 nav-font">Your Journey to the World</h2>
-                    <div
-                        class="space-y-8 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-jaipuria-blue before:to-jaipuria-accent">
-
-                        <!-- Step 1 -->
-                        <div
-                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                            <div
-                                class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-jaipuria-blue shadow-lg z-10 group-hover:bg-jaipuria-blue group-hover:text-white transition-colors text-jaipuria-blue font-bold nav-font">
-                                1</div>
-                            <div
-                                class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] glass-card p-6 rounded-2xl shadow-sm hover:shadow-xl transition-shadow ml-4 md:ml-0 md:mr-8 md:group-odd:ml-8 md:group-odd:mr-0">
-                                <h4 class="text-xl font-bold text-jaipuria-dark mb-2 nav-font">Apply</h4>
-                                <p class="text-slate-600 text-sm">Choose your preferred partner university and submit
-                                    your statement of purpose.</p>
-                            </div>
-                        </div>
-                        <!-- Step 2 -->
-                        <div
-                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                            <div
-                                class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-jaipuria-blue shadow-lg z-10 group-hover:bg-jaipuria-blue group-hover:text-white transition-colors text-jaipuria-blue font-bold nav-font">
-                                2</div>
-                            <div
-                                class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] glass-card p-6 rounded-2xl shadow-sm hover:shadow-xl transition-shadow ml-4 md:ml-0 md:mr-8 md:group-odd:ml-8 md:group-odd:mr-0">
-                                <h4 class="text-xl font-bold text-jaipuria-dark mb-2 nav-font">Select</h4>
-                                <p class="text-slate-600 text-sm">Clear the internal interview process and secure your
-                                    nomination.</p>
-                            </div>
-                        </div>
-                        <!-- Step 3 -->
-                        <div
-                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                            <div
-                                class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-jaipuria-accent shadow-lg z-10 group-hover:bg-jaipuria-accent group-hover:text-white transition-colors text-jaipuria-accent font-bold nav-font">
-                                3</div>
-                            <div
-                                class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] glass-card p-6 rounded-2xl shadow-sm hover:shadow-xl transition-shadow ml-4 md:ml-0 md:mr-8 md:group-odd:ml-8 md:group-odd:mr-0">
-                                <h4 class="text-xl font-bold text-jaipuria-dark mb-2 nav-font">Fly</h4>
-                                <p class="text-slate-600 text-sm">Attend the pre-departure briefing, get your visa, and
-                                    board your flight!</p>
-                            </div>
-                        </div>
-                        <!-- Step 4 -->
-                        <div
-                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                            <div
-                                class="flex items-center justify-center w-12 h-12 rounded-full bg-jaipuria-accent border-4 border-jaipuria-accent shadow-lg z-10 text-white font-bold nav-font">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                            <div
-                                class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-gradient-to-br from-jaipuria-blue to-blue-800 p-6 rounded-2xl shadow-xl transition-shadow ml-4 md:ml-0 md:mr-8 md:group-odd:ml-8 md:group-odd:mr-0 text-white">
-                                <h4 class="text-xl font-bold mb-2 nav-font text-white">Earn Credits</h4>
-                                <p class="text-blue-100 text-sm">Study abroad, network globally, and transfer credits
-                                    seamlessly back to Jaipuria.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TAB 2: GLOBAL PARTNERS -->
-        <section id="tab-partners" class="tab-content">
-
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-black text-jaipuria-dark mb-4 nav-font">
-                    Our Global Footprint
-                </h2>
-
-                <p class="text-slate-600 max-w-2xl mx-auto">
-                    Collaborating with top-tier institutions worldwide to bring
-                    you unparalleled academic excellence.
-                </p>
+    <!-- Hero / Institutional Banner -->
+    <section class="hero-banner relative w-full h-[70vh] min-h-[500px] flex flex-col justify-center pt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div
+                class="text-gray-300 text-xs md:text-sm mb-6 flex items-center gap-2 font-medium uppercase tracking-widest">
+                <a href="#" class="hover:text-white"><i class="fa-solid fa-house"></i> Home</a>
+                <span><i class="fa-solid fa-chevron-right text-[10px]"></i></span>
+                <span class="text-accent">International Relations</span>
             </div>
 
-            <div id="partnersContainer" class="space-y-16"></div>
-
-        </section>
-
-        <!-- TAB 3: IMMERSION & EXCHANGE -->
-        <section id="tab-immersion" class="tab-content">
-            <div class="grid md:grid-cols-3 gap-8">
-
-                <!-- Card 1 -->
-                <div
-                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-2xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-2">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80"
-                            alt="Students"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div
-                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-jaipuria-blue uppercase">
-                            Mandatory</div>
-                    </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-bold text-jaipuria-dark mb-3 nav-font">Student Exchange</h3>
-                        <p class="text-slate-600 mb-6 flex-grow text-sm leading-relaxed">
-                            A credit-based semester abroad. Study at partner universities without paying extra tuition
-                            fees. Immerse yourself deeply in a new academic and cultural environment for 3-6 months.
-                        </p>
-                        <a href="/exchange-details"
-                            class="mt-auto block text-center w-full bg-slate-100 hover:bg-jaipuria-blue hover:text-white text-jaipuria-dark font-semibold py-3 rounded-xl transition-colors duration-300 nav-font">
-                            Know More
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div
-                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-2xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-2 relative">
-                    <div
-                        class="absolute -top-10 -right-10 w-24 h-24 bg-jaipuria-accent rounded-full blur-2xl opacity-20 z-0">
-                    </div>
-                    <div class="h-48 overflow-hidden relative z-10">
-                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80"
-                            alt="Global City"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div
-                            class="absolute top-4 right-4 bg-jaipuria-accent/90 text-white px-3 py-1 rounded-full text-xs font-bold uppercase backdrop-blur-sm">
-                            Popular</div>
-                    </div>
-                    <div class="p-8 flex flex-col flex-grow z-10">
-                        <h3 class="text-2xl font-bold text-jaipuria-dark mb-3 nav-font">Global Immersion</h3>
-                        <p class="text-slate-600 mb-6 flex-grow text-sm leading-relaxed">
-                            Short-term, high-impact industry visits spanning 1-2 weeks in hubs like Singapore, Dubai,
-                            and Europe. Experience global corporate mechanics firsthand through guided tours and expert
-                            talks.
-                        </p>
-                        <a href="/exchange-details"
-                            class="mt-auto block text-center w-full bg-slate-100 hover:bg-jaipuria-blue hover:text-white text-jaipuria-dark font-semibold py-3 rounded-xl transition-colors duration-300 nav-font">
-                            Know More
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div
-                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-2xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-2">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80" alt="Webinar"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-bold text-jaipuria-dark mb-3 nav-font">Faculty Exchange</h3>
-                        <p class="text-slate-600 mb-6 flex-grow text-sm leading-relaxed">
-                            Learn from the best minds globally. Our platform facilitates cross-border faculty teachings,
-                            joint research programs, and exclusive international webinars integrated into your
-                            curriculum.
-                        </p>
-                        <a href="/exchange-details"
-                            class="mt-auto block text-center w-full bg-slate-100 hover:bg-jaipuria-blue hover:text-white text-jaipuria-dark font-semibold py-3 rounded-xl transition-colors duration-300 nav-font">
-                            Know More
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- TAB 4: STUDENT VOICES (Reel Style) -->
-        <section id="tab-voices" class="tab-content">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-black text-jaipuria-dark mb-4 nav-font">Life Beyond Borders</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">Hear straight from our students who took the leap and
-                    transformed their careers.</p>
-            </div>
-
-            <!-- Masonry / Grid Reel Setup -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
-
-                <!-- Reel 1 -->
-                <div
-                    class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&q=80"
-                        alt="Student in Paris"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
-                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 text-white">
-                            <i class="fa-solid fa-quote-left text-jaipuria-accent mb-2 text-xl"></i>
-                            <p class="text-sm font-medium leading-snug mb-3">"Studying at Rennes completely changed how
-                                I view global marketing. The diversity in the classroom was insane!"</p>
-                            <div class="flex items-center gap-2">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-jaipuria-accent flex items-center justify-center font-bold text-xs nav-font">
-                                    AA</div>
-                                <div>
-                                    <h5 class="text-xs font-bold nav-font">Aarav Agarwal</h5>
-                                    <p class="text-[10px] text-slate-300">Exchange @ France</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Reel 2 -->
-                <div
-                    class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 md:mt-8">
-                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80"
-                        alt="Student in Malaysia"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
-                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 text-white">
-                            <i class="fa-solid fa-quote-left text-jaipuria-accent mb-2 text-xl"></i>
-                            <p class="text-sm font-medium leading-snug mb-3">"The immersion program at TAR UMT gave me
-                                real-time exposure to ASEAN economies. Unforgettable."</p>
-                            <div class="flex items-center gap-2">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-jaipuria-blue flex items-center justify-center font-bold text-xs nav-font">
-                                    NK</div>
-                                <div>
-                                    <h5 class="text-xs font-bold nav-font">Neha Kapoor</h5>
-                                    <p class="text-[10px] text-slate-300">Immersion @ Malaysia</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Reel 3 -->
-                <div
-                    class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80"
-                        alt="Student in Campus"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
-                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 text-white">
-                            <i class="fa-solid fa-quote-left text-jaipuria-accent mb-2 text-xl"></i>
-                            <p class="text-sm font-medium leading-snug mb-3">"UoW Dubai's infrastructure and the mix of
-                                cultures helped me secure an international placement."</p>
-                            <div class="flex items-center gap-2">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center font-bold text-xs nav-font">
-                                    RS</div>
-                                <div>
-                                    <h5 class="text-xs font-bold nav-font">Rahul Singh</h5>
-                                    <p class="text-[10px] text-slate-300">Exchange @ Dubai</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Reel 4 -->
-                <div
-                    class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 md:mt-8">
-                    <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Student Group"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6">
-                        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 text-white">
-                            <i class="fa-solid fa-quote-left text-jaipuria-accent mb-2 text-xl"></i>
-                            <p class="text-sm font-medium leading-snug mb-3">"The support from Jaipuria's IR desk made
-                                my transition to New Zealand completely seamless."</p>
-                            <div class="flex items-center gap-2">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center font-bold text-xs nav-font">
-                                    SM</div>
-                                <div>
-                                    <h5 class="text-xs font-bold nav-font">Simran Malhotra</h5>
-                                    <p class="text-[10px] text-slate-300">Exchange @ NZ</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- The Showstopper (Interactive Map Placeholder) -->
-    <section id="explore" class="py-24 bg-[#111827] text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Global Footprint</h2>
-                <p class="text-gray-400 text-lg">Hover over the map to discover our international partner institutions.
-                </p>
-            </div>
-
-            <div class="relative w-full h-[400px] md:h-[600px] map-container mx-auto">
-
-                <div class="pulse-dot top-[25%] left-[46%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[280px]">
-                        <i class="fa-solid fa-landmark text-3xl text-[#f37021] mr-4"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-1">📍
-                                UK</span>
-                            <h4 class="m-0 text-[14px] font-bold text-[#111827] leading-tight">Keele University</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pulse-dot top-[30%] left-[48%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[320px]">
-                        <i class="fa-solid fa-building-columns text-3xl text-[#f37021] mr-4"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-2">📍
-                                France</span>
-                            <h4
-                                class="m-0 text-[13px] font-bold text-[#111827] leading-tight border-b border-gray-100 pb-2 mb-2">
-                                NDO French Academic Alliance</h4>
-                            <h4
-                                class="m-0 text-[13px] font-bold text-[#111827] leading-tight border-b border-gray-100 pb-2 mb-2">
-                                Rennes School of Business</h4>
-                            <h4 class="m-0 text-[13px] font-bold text-[#111827] leading-tight">Groupe KEDGE Business
-                                School</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pulse-dot top-[28%] left-[50%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[280px]">
-                        <i class="fa-solid fa-euro-sign text-3xl text-[#f37021] mr-4 px-2"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-1">📍
-                                Germany</span>
-                            <h4 class="m-0 text-[14px] font-bold text-[#111827] leading-tight">Frankfurt School of
-                                Finance & Management</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pulse-dot top-[45%] left-[63%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[280px]">
-                        <i class="fa-solid fa-earth-asia text-3xl text-[#f37021] mr-4"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-1">📍
-                                UAE</span>
-                            <h4 class="m-0 text-[14px] font-bold text-[#111827] leading-tight">Global Business Studies
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pulse-dot top-[42%] left-[72%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[280px]">
-                        <i class="fa-solid fa-mountain text-3xl text-[#f37021] mr-3"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-1">📍
-                                Bhutan</span>
-                            <h4 class="m-0 text-[14px] font-bold text-[#111827] leading-tight">The Royal Thimpu College
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pulse-dot top-[55%] left-[71%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[280px]">
-                        <i class="fa-solid fa-leaf text-3xl text-[#f37021] mr-4"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-1">📍 Sri
-                                Lanka</span>
-                            <h4 class="m-0 text-[14px] font-bold text-[#111827] leading-tight">NSBM Green University
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pulse-dot top-[58%] left-[78%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[320px]">
-                        <i class="fa-solid fa-graduation-cap text-3xl text-[#f37021] mr-4"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-2">📍
-                                Malaysia</span>
-                            <h4
-                                class="m-0 text-[13px] font-bold text-[#111827] leading-tight border-b border-gray-100 pb-2 mb-2">
-                                Universiti Teknologi PETRONAS</h4>
-                            <h4
-                                class="m-0 text-[13px] font-bold text-[#111827] leading-tight border-b border-gray-100 pb-2 mb-2">
-                                TAR University of Management & Tech</h4>
-                            <h4 class="m-0 text-[13px] font-bold text-[#111827] leading-tight">University Of Wollongong
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pulse-dot top-[35%] left-[84%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[280px]">
-                        <i class="fa-solid fa-microchip text-3xl text-[#f37021] mr-4"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-1">📍 South
-                                Korea</span>
-                            <h4 class="m-0 text-[14px] font-bold text-[#111827] leading-tight">George Mason University
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pulse-dot top-[80%] left-[92%]">
-                    <div class="jim-map-tooltip text-gray-800 !w-[320px]">
-                        <i class="fa-solid fa-chalkboard-user text-3xl text-[#f37021] mr-4"></i>
-                        <div class="flex flex-col text-left w-full">
-                            <span class="text-[11px] text-[#f37021] font-bold uppercase tracking-wider mb-2">📍 New
-                                Zealand</span>
-                            <h4
-                                class="m-0 text-[13px] font-bold text-[#111827] leading-tight border-b border-gray-100 pb-2 mb-2">
-                                Whitireia & WelTec</h4>
-                            <h4 class="m-0 text-[13px] font-bold text-[#111827] leading-tight">ARA Institute of
-                                Canterbury</h4>
-                        </div>
-                    </div>
-                </div>
-
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 max-w-4xl">
+                Global Pathways & <br><span class="text-accent">Cultural Immersion</span>
+            </h1>
+            <p
+                class="text-lg md:text-xl text-gray-100 max-w-2xl font-light mb-10 leading-relaxed border-l-4 border-accent pl-4">
+                Fostering intercultural competence, academic collaboration, and transformative learning through
+                meaningful international experiences.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#outbound"
+                    class="bg-accent text-white px-8 py-3.5 rounded-sm font-bold hover:bg-orange-600 transition shadow-lg uppercase text-sm tracking-wide">
+                    Explore Programmes
+                </a>
+                <a href="#partners"
+                    class="bg-transparent border-2 border-white text-white px-8 py-3.5 rounded-sm font-bold hover:bg-white hover:text-secondary transition uppercase text-sm tracking-wide">
+                    View Partners
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 4. FOOTER -->
-    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="md:col-span-2">
-                <div class="flex items-center gap-3 mb-6">
-                    <!-- <img src="https://logo.clearbit.com/jaipuria.ac.in"
-                        alt="Jaipuria Logo" class="w-10 h-10 object-contain rounded-full bg-white">
-                    <span class="nav-font text-white font-bold text-lg leading-tight">
-                        JAIPURIA <br><span class="text-xs text-jaipuria-accent">Centre for International
-                            Relations</span>
-                    </span> -->
-                    <a href="https://www.jaipuria.ac.in/" class="flex items-center gap-3 group bg-white">
-                        <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Jaipuria-Logo.jpg"
-                            alt="Jaipuria Logo"
-                            class="w-40 h-auto object-contain group-hover:scale-110 transition-transform duration-300 p-3">
-                    </a>
-                </div>
-                <p class="text-sm max-w-sm mb-6 leading-relaxed">
-                    Empowering students with global perspectives. Connecting Jaipuria to the world's leading business
-                    schools.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#"
-                        class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-jaipuria-accent hover:text-white transition-colors"><i
-                            class="fa-brands fa-linkedin-in text-sm"></i></a>
-                    <a href="#"
-                        class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-jaipuria-accent hover:text-white transition-colors"><i
-                            class="fa-brands fa-twitter text-sm"></i></a>
-                    <a href="#"
-                        class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-jaipuria-accent hover:text-white transition-colors"><i
-                            class="fa-brands fa-instagram text-sm"></i></a>
-                </div>
+    <!-- At a Glance Bar (Overlapping) -->
+    <div
+        class="bg-white shadow-2xl relative z-20 -mt-16 mx-4 lg:mx-auto max-w-6xl rounded flex flex-wrap justify-between items-center p-8 border-t-4 border-accent">
+        <div class="flex items-center gap-5 mb-6 lg:mb-0 w-full sm:w-auto">
+            <div
+                class="w-14 h-14 bg-lightbg rounded-full flex items-center justify-center text-primary text-2xl shadow-sm">
+                <i class="fa-solid fa-earth-americas"></i>
             </div>
-
             <div>
-                <h4 class="text-white font-bold mb-4 nav-font">Quick Links</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:text-jaipuria-accent transition-colors">About IR</a></li>
-                    <li><a href="#" class="hover:text-jaipuria-accent transition-colors">Academic Policies</a></li>
-                    <li><a href="#" class="hover:text-jaipuria-accent transition-colors">Download Brochure</a></li>
-                    <li><a href="#" class="hover:text-jaipuria-accent transition-colors">Contact IR Desk</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-white font-bold mb-4 nav-font">Campuses</h4>
-                <ul class="space-y-2 text-sm">
-                    <li>Lucknow</li>
-                    <li>Noida</li>
-                    <li>Jaipur</li>
-                    <li>Indore</li>
-                </ul>
+                <h4 class="font-extrabold text-2xl text-secondary">13+</h4>
+                <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">Global Partners</p>
             </div>
         </div>
-        <div
-            class="max-w-7xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-slate-800 text-xs text-center flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; 2026 Jaipuria Institute of Management. All rights reserved.</p>
-            <div class="space-x-4 mt-4 md:mt-0">
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        <div class="hidden lg:block w-px h-16 bg-gray-200"></div>
+        <div class="flex items-center gap-5 mb-6 lg:mb-0 w-full sm:w-auto">
+            <div
+                class="w-14 h-14 bg-lightbg rounded-full flex items-center justify-center text-primary text-2xl shadow-sm">
+                <i class="fa-solid fa-plane-departure"></i>
+            </div>
+            <div>
+                <h4 class="font-extrabold text-2xl text-secondary">100+</h4>
+                <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">Student Mobility</p>
+            </div>
+        </div>
+        <div class="hidden lg:block w-px h-16 bg-gray-200"></div>
+        <div class="flex items-center gap-5 mb-6 lg:mb-0 w-full sm:w-auto">
+            <div
+                class="w-14 h-14 bg-lightbg rounded-full flex items-center justify-center text-primary text-2xl shadow-sm">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div>
+                <h4 class="font-extrabold text-2xl text-secondary">4</h4>
+                <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">Diverse Campuses</p>
+            </div>
+        </div>
+        <div class="hidden lg:block w-px h-16 bg-gray-200"></div>
+        <div class="flex items-center gap-5 w-full sm:w-auto">
+            <div
+                class="w-14 h-14 bg-lightbg rounded-full flex items-center justify-center text-primary text-2xl shadow-sm">
+                <i class="fa-solid fa-globe"></i>
+            </div>
+            <div>
+                <h4 class="font-extrabold text-2xl text-secondary">IaH</h4>
+                <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">Intl. at Home</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COIR & Overview Section (Split Layout) -->
+    <section id="overview" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="pr-0 lg:pr-8">
+                    <h5 class="text-accent font-bold tracking-widest uppercase text-sm mb-3">About COIR</h5>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-secondary mb-6 section-heading leading-tight">
+                        Connecting Cultures. Enabling Global Learning.</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        The Central Office of International Relations (COIR) serves as a strategic unit dedicated to
+                        advancing the institution’s vision of global engagement and internationalization.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        It aims to provide students and faculty with meaningful international exposure through academic
+                        collaboration, cross-cultural interaction, and global learning opportunities. India acts as an
+                        attractive destination for exchange, combining academic rigour with extraordinary cultural
+                        richness.
+                    </p>
+
+                    <div class="bg-lightbg p-6 rounded border-l-4 border-primary">
+                        <h4 class="font-bold text-secondary mb-3">Our Core Commitments:</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-gray-700 font-medium">
+                                <i class="fa-solid fa-check text-accent mt-1"></i>
+                                <span>Enhancing intercultural competence and global awareness</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-gray-700 font-medium">
+                                <i class="fa-solid fa-check text-accent mt-1"></i>
+                                <span>Enabling transformative learning experiences</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-gray-700 font-medium">
+                                <i class="fa-solid fa-check text-accent mt-1"></i>
+                                <span>Exchange programmes, international faculty interaction & diverse engagement</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute inset-0 bg-primary translate-x-4 translate-y-4 rounded-sm -z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"
+                        alt="Global Students" class="rounded-sm shadow-xl w-full object-cover h-[500px]">
+                    <!-- Floating Highlight Box -->
+                    <div class="absolute -bottom-6 -left-6 bg-secondary text-white p-8 shadow-2xl rounded-sm max-w-sm">
+                        <i class="fa-solid fa-map-location-dot text-4xl text-accent mb-4"></i>
+                        <h4 class="font-bold text-xl mb-2">Destination India</h4>
+                        <p class="text-sm text-gray-300 leading-relaxed">India functions as a live laboratory. With
+                            rapid digital transformation, students gain first-hand insights into emerging markets and
+                            frugal innovation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Partners Network (NEW TABBED INTERFACE UPES STYLE) -->
+    <section id="partners" class="py-24 bg-lightbg border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h5 class="text-accent font-bold tracking-widest uppercase text-sm mb-3">Our Network</h5>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-secondary section-heading-center">Global Academic
+                    Partners</h2>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">Active MoUs with prestigious institutions
+                    worldwide for trimester exchanges, collaborative research, and global learning.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center gap-8 border-b-2 border-gray-200 mb-12">
+                <button class="tab-btn active pb-3 text-lg font-medium text-gray-500 uppercase tracking-wide px-4"
+                    onclick="openTab(event, 'europe')">Europe & UK</button>
+                <button class="tab-btn pb-3 text-lg font-medium text-gray-500 uppercase tracking-wide px-4"
+                    onclick="openTab(event, 'asia')">Asia & Middle East</button>
+                <button class="tab-btn pb-3 text-lg font-medium text-gray-500 uppercase tracking-wide px-4"
+                    onclick="openTab(event, 'oceania')">Oceania</button>
+            </div>
+
+            <!-- Tab Content: Europe -->
+            <div id="europe" class="tab-content active">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gray-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition">
+                            <i class="fa-solid fa-building-columns text-2xl text-secondary group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-secondary mb-1">Keele University</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">United Kingdom</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gray-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition">
+                            <i class="fa-solid fa-building-columns text-2xl text-secondary group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-secondary mb-1">Frankfurt School</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">Germany</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gray-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition">
+                            <i class="fa-solid fa-building-columns text-2xl text-secondary group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-secondary mb-1">Rennes School of Business</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">France</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gray-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition">
+                            <i class="fa-solid fa-building-columns text-2xl text-secondary group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-secondary mb-1">KEDGE Business School</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">France</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Asia -->
+            <div id="asia" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <h4 class="font-bold text-lg text-secondary mb-1">George Mason University</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">South Korea</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <h4 class="font-bold text-lg text-secondary mb-1">Universiti Teknologi PETRONAS</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">Malaysia</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <h4 class="font-bold text-lg text-secondary mb-1">TAR UMT</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">Malaysia</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <h4 class="font-bold text-lg text-secondary mb-1">University of Wollongong</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">Malaysia</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <h4 class="font-bold text-lg text-secondary mb-1">NSBM Green University</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">Sri Lanka</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <h4 class="font-bold text-lg text-secondary mb-1">Global Business Studies</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">UAE</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Oceania -->
+            <div id="oceania" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <h4 class="font-bold text-lg text-secondary mb-1">Whiteireia and WelTech</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">New Zealand</p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm border border-gray-100 hover:shadow-lg transition text-center group">
+                        <h4 class="font-bold text-lg text-secondary mb-1">ARA Institute of Canterbury</h4>
+                        <p class="text-sm font-semibold text-accent uppercase tracking-widest">New Zealand</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outbound Programmes (Full Image Cards like UPES) -->
+    <section id="outbound" class="py-24 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h5 class="text-accent font-bold tracking-widest uppercase text-sm mb-2">Global Pathways</h5>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-secondary section-heading mb-16">Outbound Programmes
+            </h2>
+
+            <!-- Flagship Exchange (Large Banner Style) -->
+            <div class="relative bg-secondary rounded-sm overflow-hidden mb-16 flex flex-col lg:flex-row group">
+                <div class="lg:w-1/2 p-10 lg:p-16 z-10">
+                    <span
+                        class="inline-block px-4 py-1.5 bg-accent text-white text-xs font-extrabold rounded-sm mb-6 uppercase tracking-widest">Flagship
+                        Program</span>
+                    <h3 class="text-3xl lg:text-4xl font-extrabold text-white mb-6">Trimester Exchange Programme</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                        A three-month immersive experience at <strong>Rennes School of Business, France</strong>.
+                        Participants spend a full trimester at the institution, with their academic evaluation conducted
+                        by the host university.
+                    </p>
+                    <ul class="space-y-4 mb-8 text-gray-200">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-accent"></i>
+                            <span>Complete Credit Transfer</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-accent"></i>
+                            <span>Diverse cohort of 50+ international students</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-accent"></i>
+                            <span>Live on campus in Europe</span></li>
+                    </ul>
+                    <a href="#contact"
+                        class="inline-block bg-white text-secondary font-bold px-8 py-3 rounded-sm hover:bg-primary hover:text-white transition uppercase text-sm tracking-wide">Apply
+                        Now</a>
+                </div>
+                <div class="lg:w-1/2 relative min-h-[300px] hover-card-zoom overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-secondary to-transparent z-10 hidden lg:block">
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000&auto=format&fit=crop"
+                        alt="Paris Exchange" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Short Term Immersions Grid -->
+            <h3 class="text-2xl lg:text-3xl font-extrabold text-secondary mb-10 border-b pb-4">Short-term International
+                Immersions (2025-26)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-sm shadow-md overflow-hidden hover-card-zoom group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop"
+                            alt="Dubai" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-accent text-white font-bold px-3 py-1 text-xs rounded-sm shadow uppercase">
+                            5 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-extrabold text-xl text-secondary mb-3 group-hover:text-primary transition">Dubai
+                            & Abu Dhabi</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Exposure to global business hubs, blending
+                            industry visits with cultural exploration at RIT Dubai. Gain insights into innovation.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-sm shadow-md overflow-hidden hover-card-zoom group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=800&auto=format&fit=crop"
+                            alt="Europe" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-accent text-white font-bold px-3 py-1 text-xs rounded-sm shadow uppercase">
+                            8 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-extrabold text-xl text-secondary mb-3 group-hover:text-primary transition">
+                            Europe Immersion</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Rich academic experience across Paris,
+                            Brussels, and Amsterdam. Engage with Kedge Business School and explore diverse practices.
+                        </p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-sm shadow-md overflow-hidden hover-card-zoom group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1588096344356-9b343810842e?q=80&w=800&auto=format&fit=crop"
+                            alt="Sri Lanka" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-accent text-white font-bold px-3 py-1 text-xs rounded-sm shadow uppercase">
+                            10 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-extrabold text-xl text-secondary mb-3 group-hover:text-primary transition">NSBM,
+                            Sri Lanka</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Combined academic learning with cross-cultural
+                            engagement. Interact with peers and gain insights into Sri Lanka's ecosystem.</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white rounded-sm shadow-md overflow-hidden hover-card-zoom group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop"
+                            alt="Malaysia" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-accent text-white font-bold px-3 py-1 text-xs rounded-sm shadow uppercase">
+                            7 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-extrabold text-xl text-secondary mb-3 group-hover:text-primary transition">UTP,
+                            Malaysia</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Immersive experience offering exposure to
+                            cutting-edge academic practices, innovation, technology, and global collaboration.</p>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-white rounded-sm shadow-md overflow-hidden hover-card-zoom group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?q=80&w=800&auto=format&fit=crop"
+                            alt="Thailand" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-accent text-white font-bold px-3 py-1 text-xs rounded-sm shadow uppercase">
+                            7 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-extrabold text-xl text-secondary mb-3 group-hover:text-primary transition">AIT,
+                            Thailand</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Experiential learning focusing on regional
+                            business dynamics and technological advancements through industry interactions.</p>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-white rounded-sm shadow-md overflow-hidden hover-card-zoom group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?q=80&w=800&auto=format&fit=crop"
+                            alt="South Korea" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-accent text-white font-bold px-3 py-1 text-xs rounded-sm shadow uppercase">
+                            10 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-extrabold text-xl text-secondary mb-3 group-hover:text-primary transition">GMU,
+                            South Korea</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Fostering a global outlook, leadership skills,
+                            and cross-cultural collaboration in South Korea's structured academic environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campuses Section (UPES Full Width Image Style) -->
+    <section id="destinations" class="py-24 bg-secondary text-white relative">
+        <div class="absolute inset-0 opacity-10 bg-center bg-cover"
+            style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2000&auto=format&fit=crop');">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h5 class="text-accent font-bold tracking-widest uppercase text-sm mb-2">Study Locations</h5>
+                <h2 class="text-3xl md:text-5xl font-extrabold section-heading-center text-white">4 Diverse Academic
+                    Ecosystems</h2>
+                <p class="text-gray-300 mt-6 max-w-2xl mx-auto text-lg">Experience multiple contexts of India’s economic
+                    and cultural landscape through our strategically located campuses.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Campus 1 -->
+                <div class="group relative h-[400px] rounded-sm overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1622308644420-b21a719c28e8?q=80&w=800&auto=format&fit=crop"
+                        alt="Lucknow"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div
+                        class="absolute bottom-0 left-0 p-6 w-full transform group-hover:-translate-y-2 transition-transform duration-300">
+                        <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Culturally Rich
+                            Hub</span>
+                        <h4 class="font-extrabold text-2xl text-white mb-2">Lucknow</h4>
+                        <p
+                            class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">
+                            Interdisciplinary learning in governance, public policy, and Awadhi cultural heritage.</p>
+                    </div>
+                </div>
+
+                <!-- Campus 2 -->
+                <div class="group relative h-[400px] rounded-sm overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1587162146766-9b16e8b4e7b8?q=80&w=800&auto=format&fit=crop"
+                        alt="Noida"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div
+                        class="absolute bottom-0 left-0 p-6 w-full transform group-hover:-translate-y-2 transition-transform duration-300">
+                        <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Gateway to
+                            Modern India</span>
+                        <h4 class="font-extrabold text-2xl text-white mb-2">Noida</h4>
+                        <p
+                            class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">
+                            Hub for IT, fintech, and startups in NCR. Experiential education through live projects.</p>
+                    </div>
+                </div>
+
+                <!-- Campus 3 -->
+                <div class="group relative h-[400px] rounded-sm overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop"
+                        alt="Jaipur"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div
+                        class="absolute bottom-0 left-0 p-6 w-full transform group-hover:-translate-y-2 transition-transform duration-300">
+                        <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Heritage &
+                            Experiential</span>
+                        <h4 class="font-extrabold text-2xl text-white mb-2">Jaipur</h4>
+                        <p
+                            class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">
+                            Living laboratory for tourism-led economic development and cultural entrepreneurship.</p>
+                    </div>
+                </div>
+
+                <!-- Campus 4 -->
+                <div class="group relative h-[400px] rounded-sm overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1629806497127-6df157e84cc4?q=80&w=800&auto=format&fit=crop"
+                        alt="Indore"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div
+                        class="absolute bottom-0 left-0 p-6 w-full transform group-hover:-translate-y-2 transition-transform duration-300">
+                        <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Industry &
+                            Startups</span>
+                        <h4 class="font-extrabold text-2xl text-white mb-2">Indore</h4>
+                        <p
+                            class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">
+                            Bridging a robust manufacturing base with a dynamic startup hub.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inbound & IaH Section -->
+    <section id="iah" class="py-24 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Inbound Column -->
+                <div>
+                    <h5 class="text-accent font-bold tracking-widest uppercase text-sm mb-2">Campus Diversity</h5>
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-secondary section-heading mb-8">Student Inbound
+                        Initiatives</h2>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        Hosting international students for a rich blend of academic learning and cultural immersion in
+                        India.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div
+                            class="flex gap-6 items-start bg-lightbg p-6 rounded border border-gray-100 hover:shadow-md transition">
+                            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=200&auto=format&fit=crop"
+                                class="w-24 h-24 rounded object-cover shadow-sm">
+                            <div>
+                                <h4 class="font-bold text-xl text-secondary mb-1">NSBM Green University</h4>
+                                <p class="text-xs text-accent font-bold uppercase mb-2 tracking-wide">Sri Lanka</p>
+                                <p class="text-sm text-gray-600">Incredible India Immersion Program focusing on
+                                    entrepreneurship and themes of happiness and well-being.</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex gap-6 items-start bg-lightbg p-6 rounded border border-gray-100 hover:shadow-md transition">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=200&auto=format&fit=crop"
+                                class="w-24 h-24 rounded object-cover shadow-sm">
+                            <div>
+                                <h4 class="font-bold text-xl text-secondary mb-1">UTP</h4>
+                                <p class="text-xs text-accent font-bold uppercase mb-2 tracking-wide">Malaysia</p>
+                                <p class="text-sm text-gray-600">Foundation of Happiness: Psychological Immersion
+                                    exploring emotional well-being and positive psychology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IaH Column -->
+                <div class="bg-primary text-white p-10 lg:p-12 rounded-sm shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 opacity-10">
+                        <i class="fa-solid fa-globe text-[250px]"></i>
+                    </div>
+                    <h5 class="text-accent font-bold tracking-widest uppercase text-sm mb-2 relative z-10">Global
+                        Integration</h5>
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-white section-heading mb-8 relative z-10">
+                        Internationalization at Home</h2>
+                    <p class="text-gray-200 mb-10 text-lg relative z-10">
+                        Embedding global perspectives within the campus learning experience without the need for
+                        overseas travel.
+                    </p>
+
+                    <ul class="space-y-6 relative z-10">
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-chalkboard-user text-xl text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">International Teaching Week</h4>
+                                <p class="text-sm text-gray-300 mt-1">Distinguished faculty from global institutions
+                                    deliver specialized courses.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-people-arrows text-xl text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Faculty Exchange & Modules</h4>
+                                <p class="text-sm text-gray-300 mt-1">Academic sessions by visiting professors from
+                                    universities like TAR UMT.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-lightbulb text-xl text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Expert Sessions</h4>
+                                <p class="text-sm text-gray-300 mt-1">Research seminars and FT50 Star Series delivered
+                                    by academicians.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Testimonials (Image-heavy Slider Layout) -->
+    <section class="py-24 bg-lightbg border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h5 class="text-accent font-bold tracking-widest uppercase text-sm mb-2">Student Voices</h5>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-secondary section-heading-center mb-12">Hear From
+                    Our Achievers</h2>
+            </div>
+
+            <!-- Slider Container -->
+            <div id="testimonial-container" class="relative bg-white shadow-xl rounded-sm border border-gray-100">
+
+                <!-- Slide 1 -->
+                <div class="testimonial-slide active">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop"
+                                alt="Student" class="w-full h-full object-cover min-h-[300px]">
+                        </div>
+                        <div class="md:w-2/3 p-10 md:p-14 flex flex-col justify-center relative">
+                            <i class="fa-solid fa-quote-left text-6xl text-gray-100 absolute top-6 left-6"></i>
+                            <p
+                                class="text-lg lg:text-xl text-gray-600 font-light italic mb-8 leading-relaxed relative z-10">
+                                "Studying at Rennes School of Business provided valuable exposure to global business
+                                practices. Interacting with a diverse international cohort enhanced my adaptability,
+                                communication skills, and global perspective."
+                            </p>
+                            <div>
+                                <h4 class="font-extrabold text-secondary text-xl">Preet Agarwal</h4>
+                                <p class="text-sm text-gray-500 font-medium">Batch 2025–27, Jaipur campus</p>
+                                <p class="text-xs text-accent font-bold mt-1 uppercase tracking-wide">Europe Trimester
+                                    Exchange</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="testimonial-slide">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&w=800&auto=format&fit=crop"
+                                alt="Student" class="w-full h-full object-cover min-h-[300px]">
+                        </div>
+                        <div class="md:w-2/3 p-10 md:p-14 flex flex-col justify-center relative">
+                            <i class="fa-solid fa-quote-left text-6xl text-gray-100 absolute top-6 left-6"></i>
+                            <p
+                                class="text-lg lg:text-xl text-gray-600 font-light italic mb-8 leading-relaxed relative z-10">
+                                "The exposure to PETRONAS’s innovative ecosystem, combined with cultural immersion,
+                                helped me bridge the gap between theory and real-world application. It pushed me to be
+                                more open and observant."
+                            </p>
+                            <div>
+                                <h4 class="font-extrabold text-secondary text-xl">Anmol Vijayvargiya</h4>
+                                <p class="text-sm text-gray-500 font-medium">Batch 2025–27, Jaipur Campus</p>
+                                <p class="text-xs text-accent font-bold mt-1 uppercase tracking-wide">Malaysia Immersion
+                                    Programme</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="testimonial-slide">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop"
+                                alt="Student" class="w-full h-full object-cover min-h-[300px]">
+                        </div>
+                        <div class="md:w-2/3 p-10 md:p-14 flex flex-col justify-center relative">
+                            <i class="fa-solid fa-quote-left text-6xl text-gray-100 absolute top-6 left-6"></i>
+                            <p
+                                class="text-lg lg:text-xl text-gray-600 font-light italic mb-8 leading-relaxed relative z-10">
+                                "Through engaging activities like Blokus and case studies on the Metaverse, I gained
+                                fresh insights into the intersection of digital leisure and business metrics. It
+                                provided a powerful new lens for growth."
+                            </p>
+                            <div>
+                                <h4 class="font-extrabold text-secondary text-xl">Shashwat Tejpal</h4>
+                                <p class="text-sm text-gray-500 font-medium">Batch 2025-27, Lucknow campus</p>
+                                <p class="text-xs text-accent font-bold mt-1 uppercase tracking-wide">Creative
+                                    Strategies (IaH)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex gap-4">
+                    <button onclick="prevSlide()"
+                        class="w-12 h-12 rounded-full bg-secondary text-white shadow-lg hover:bg-primary transition flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button onclick="nextSlide()"
+                        class="w-12 h-12 rounded-full bg-secondary text-white shadow-lg hover:bg-primary transition flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer id="contact" class="bg-[#1a202c] pt-20 pb-10 border-t-4 border-accent mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+                <!-- Col 1 -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-2xl">
+                            J</div>
+                        <div class="flex flex-col">
+                            <span
+                                class="font-bold text-white leading-tight text-xl tracking-tight uppercase">Jaipuria</span>
+                            <span class="text-[10px] text-gray-400 font-bold tracking-widest uppercase">Intl.
+                                Relations</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-8 leading-relaxed pr-4">
+                        Fostering intercultural competence, academic collaboration, and transformative learning through
+                        meaningful international experiences.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#"
+                            class="w-10 h-10 rounded bg-white/10 flex items-center justify-center text-gray-300 hover:bg-accent hover:text-white transition"><i
+                                class="fa-brands fa-linkedin-in text-lg"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded bg-white/10 flex items-center justify-center text-gray-300 hover:bg-accent hover:text-white transition"><i
+                                class="fa-brands fa-twitter text-lg"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded bg-white/10 flex items-center justify-center text-gray-300 hover:bg-accent hover:text-white transition"><i
+                                class="fa-brands fa-facebook-f text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4
+                        class="text-white font-bold mb-8 text-sm uppercase tracking-widest border-b border-gray-700 pb-3">
+                        IRC Team Leadership</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><strong class="text-gray-200 block mb-1">Prof. Pallavi Srivastava</strong>One Jaipuria Dean
+                            (IR)</li>
+                        <li><strong class="text-gray-200 block mb-1">Dr. Kajal Srivastava</strong>Chairperson, Lucknow
+                        </li>
+                        <li><strong class="text-gray-200 block mb-1">Prof. Poonam Sharma</strong>Chairperson, Noida</li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4
+                        class="text-white font-bold mb-8 text-sm uppercase tracking-widest border-b border-gray-700 pb-3">
+                        IRC Chairpersons</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><strong class="text-gray-200 block mb-1">Dr. Aparna Mendiratta</strong>Chairperson, Jaipur
+                        </li>
+                        <li><strong class="text-gray-200 block mb-1">Dr. Pooja Darda</strong>Chairperson, Indore</li>
+                        <li><strong class="text-gray-200 block mb-1">Dr. Nishtha Mallik</strong>Co-Chairperson, Lucknow
+                        </li>
+                        <li><strong class="text-gray-200 block mb-1">Dr. Oum Kumari</strong>Co-Chairperson, Jaipur</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4
+                        class="text-white font-bold mb-8 text-sm uppercase tracking-widest border-b border-gray-700 pb-3">
+                        Contact Details</h4>
+                    <p class="text-sm text-gray-400 mb-6 flex items-start gap-3">
+                        <i class="fa-solid fa-envelope text-accent mt-1 text-lg"></i>
+                        <a href="mailto:dean.ir@jaipuria.ac.in"
+                            class="hover:text-white transition">dean.ir@jaipuria.ac.in</a>
+                    </p>
+                    <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                        Interested in signing an MoU? Reach out for trimester exchange, joint research, or FDP/MDP
+                        programs.
+                    </p>
+                    <a href="mailto:dean.ir@jaipuria.ac.in"
+                        class="inline-block bg-primary text-white font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-sm hover:bg-white hover:text-primary transition shadow-lg">
+                        Partner With Us
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div
+                class="pt-8 border-t border-gray-800 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2026 Jaipuria Institute of Management. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0 font-medium">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Use</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- LEAD POPUP -->
-    <div id="leadPopup"
-        class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[999] hidden">
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
 
-        <div class="bg-white rounded-2xl w-full max-w-xl p-8 relative shadow-2xl">
+        // Tabbed Interface Logic for Global Partners
+        function openTab(evt, tabName) {
+            let i, tabcontent, tablinks;
 
-            <!-- CLOSE BUTTON -->
-            <button id="closeLeadPopup" class="absolute top-4 right-4 text-slate-500 hover:text-red-500 text-2xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            // Sabhi tab content hide karo
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
 
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-black text-jaipuria-dark mb-2 nav-font">
-                    Ready to Step Out?
-                </h2>
-                <p class="text-slate-500">
-                    Drop your details and our IR coordinators will contact you.
-                </p>
-            </div>
+            // Sabhi tab buttons se active class hatao
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
 
-            <form class="space-y-5">
+            // Current tab dikhao aur button active karo
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
 
-                <div class="grid md:grid-cols-2 gap-5">
+        // Testimonial Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
 
-                    <input type="text" placeholder="Full Name"
-                        class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-jaipuria-accent outline-none">
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) slide.classList.add('active');
+            });
+        }
 
-                    <input type="email" placeholder="Email Address"
-                        class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-jaipuria-accent outline-none">
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
 
-                </div>
-
-
-                <div class="grid md:grid-cols-2 gap-5">
-
-                    <input type="tel" placeholder="Phone Number"
-                        class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-jaipuria-accent outline-none">
-
-                    <select
-                        class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-jaipuria-accent outline-none">
-
-                        <option disabled selected>Interested In</option>
-                        <option value="exchange">Student Exchange (Semester Abroad)</option>
-                        <option value="immersion">Global Immersion</option>
-                        <option value="general">General Inquiry</option>
-
-                    </select>
-
-                </div>
-
-                <button type="submit"
-                    class="w-full bg-jaipuria-accent text-white font-bold py-3 rounded-lg hover:opacity-90 transition">
-                    Request Callback
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-    <script src="script.js" defer></script>
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Relations | Jaipuria Institute of Management</title>
+    <link rel="icon" href="https://www.jaipuria.ac.in/wp-content/uploads/2022/05/favicon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Montserrat only -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        jaipuria: {
+                            blue: '#1e3a8a', // blue-900
+                            light: '#3b82f6', // blue-500
+                            accent: '#f59e0b', // amber-500
+                            dark: '#0f172a', // slate-900
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base & Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .nav-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Tab Transitions */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Nav Transition */
+        #navbar {
+            transition: all 0.3s ease;
+        }
+
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-scrolled .nav-link {
+            color: #1e3a8a !important;
+        }
+
+        /* Image Overlays */
+        .gradient-overlay {
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.1) 100%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Interactive Map Background */
+        .map-container {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+        }
+
+        /* Pulsing Dots CSS */
+        .pulse-dot {
+            width: 15px;
+            height: 15px;
+            background-color: #f37021;
+            /* Jaipuria Orange */
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+            box-shadow: 0 0 0 rgba(243, 112, 33, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(243, 112, 33, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(243, 112, 33, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(243, 112, 33, 0);
+            }
+        }
+
+        /* Tooltip Hover Box CSS */
+        .jim-map-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 260px;
+            border-left: 4px solid #f37021;
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        /* Tooltip Show on Hover */
+        .pulse-dot:hover .jim-map-tooltip {
+            visibility: visible;
+            opacity: 1;
+            bottom: 120%;
+        }
+    </style>
+</head>
+
+<body class="bg-[#EEEEEE] text-slate-800 antialiased selection:bg-jaipuria-accent selection:text-white font-sans">
+    <div class="max-w-[1600px] mx-auto w-full">
+
+        <header class="w-full bg-white border-b">
+
+            <!-- TOP BAR -->
+            <div class="max-w-[1200px] mx-auto px-4 py-5 flex items-center justify-between">
+
+                <div class="flex items-center gap-3">
+                    <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Jaipuria-Logo.jpg"
+                        alt="Jaipuria Logo" class="w-56 h-auto pr-3 border-r border-gray-300" />
+                    <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/AACSB-Accredited-1.webp"
+                        alt="AACSB Accredited" class="w-14 h-auto" />
+                </div>
+
+                <div class="flex items-center gap-6 text-sm text-black">
+                    <a href="#">Blog</a>
+                    <a href="#">Online PGDM</a>
+                    <a href="#">Executive Education</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Student Fee Portal</a>
+
+                    <a
+                        class="text-white px-5 py-2 font-semibold text-[17px] rounded-[15px] bg-[linear-gradient(180deg,#d67b19_0%,#d67b19_100%)] font-sans">
+                        APPLY NOW
+                    </a>
+                </div>
+
+            </div>
+
+
+            <!-- NAV BAR -->
+
+            <div class="w-full bg-[#3E6B86] mx-auto px-4">
+
+                <nav class="max-w-[1600px] flex items-center justify-center gap-8 text-white text-md font-bold py-3">
+                    <a href="#" class="px-2">About ▾</a>
+                    <a href="#" class="px-2">Programmes ▾</a>
+                    <a href="#" class="px-2">Admissions ▾</a>
+                    <a href="#" class="px-2">Campuses ▾</a>
+                    <a href="#" class="px-2">Placements ▾</a>
+                    <a href="#" class="px-2">Alumni</a>
+                    <a href="#" class="px-2">Faculty & Research ▾</a>
+                    <a href="#" class="px-2">AI Labs</a>
+                </nav>
+
+            </div>
+
+        </header>
+
+
+
+    </div>
+
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
