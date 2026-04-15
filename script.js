@@ -2,7 +2,7 @@
 const partners = [
     {
         country: "France",
-        university: "NDO French Academic Alliance – Knowledge Summit",
+        university: "NDO French Academic Alliance - Knowledge Summit",
         image: "https://www.jaipuria.ac.in/wp-content/uploads/2024/11/Rennes.jpg",
         logo: "https://www.jaipuria.ac.in/wp-content/uploads/2024/10/IFA-logo.jpg"
     },

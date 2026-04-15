@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global University | Jaipuria Institute of Management</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN setup -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#356C8E', // Jaipuria Blue
+                        secondary: '#4D3164', // Jaipuria Purple
+                        accent: '#D67B19', // Jaipuria Orange
+                        lightbg: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .hero-banner {
+            background-image: linear-gradient(to right, rgba(77, 49, 100, 0.9), rgba(53, 108, 142, 0.7)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #D67B19;
+            margin-top: 16px;
+        }
+
+        .section-heading-center::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #D67B19;
+            margin: 16px auto 0;
+        }
+
+        /* Hover effects for images */
+        .hover-zoom img {
+            transition: transform 0.6s ease;
+        }
+
+        .hover-zoom:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Video Play Button Overlay */
+        .play-btn-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px;
+            height: 64px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding-left: 5px;
+            /* Visual center for play icon */
+        }
+
+        .play-btn-overlay i {
+            color: #D67B19;
+            font-size: 24px;
+            margin: auto;
+        }
+
+        .video-card:hover .play-btn-overlay {
+            background-color: #D67B19;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-card:hover .play-btn-overlay i {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="bg-[#EEEEEE] text-gray-800">
+    <div class="max-w-[1600px] mx-auto w-full bg-white shadow-xl">
+
+        <!-- HEADER NAVIGATION (Referenced Style) -->
+        <header class="w-full bg-white sticky top-0 z-50">
+            <!-- TOP BAR -->
+            <div class="max-w-[1200px] mx-auto px-4 py-4 lg:py-5 flex items-center justify-between">
+                <div class="flex items-center gap-2 lg:gap-3">
+                    <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Jaipuria-Logo.jpg"
+                        alt="Jaipuria Logo" class="w-36 sm:w-44 lg:w-56 h-auto pr-2 lg:pr-3 border-r border-gray-300" />
+                    <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/AACSB-Accredited-1.webp"
+                        alt="AACSB Accredited" class="w-9 sm:w-11 lg:w-14 h-auto" />
+                </div>
+                <div class="hidden lg:flex items-center gap-6 text-sm text-black">
+                    <a href="#" class="hover:text-primary transition">Blog</a>
+                    <a href="#" class="hover:text-primary transition">Online PGDM</a>
+                    <a href="#" class="hover:text-primary transition">Executive Education</a>
+                    <a href="#" class="hover:text-primary transition">Contact Us</a>
+                    <a href="#" class="hover:text-primary transition">Student Fee Portal</a>
+                    <a href="#"
+                        class="text-white px-5 py-2 font-semibold text-[17px] rounded-[15px] bg-[linear-gradient(180deg,#d67b19_0%,#d67b19_100%)] hover:opacity-90 transition font-sans">
+                        APPLY NOW
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="menuToggle" class="lg:hidden flex flex-col justify-center gap-[5px] p-2 cursor-pointer">
+                    <span class="block w-6 h-[2px] bg-gray-800 transition-all duration-300"></span>
+                    <span class="block w-6 h-[2px] bg-gray-800 transition-all duration-300"></span>
+                    <span class="block w-6 h-[2px] bg-gray-800 transition-all duration-300"></span>
+                </button>
+            </div>
+
+            <!-- DESKTOP NAV BAR -->
+            <div class="hidden lg:block w-full bg-primary px-4 shadow-md relative z-10">
+                <nav
+                    class="max-w-[1600px] mx-auto flex items-center justify-center gap-4 text-white text-md font-bold py-3">
+                    <a href="#" class="px-2 hover:text-accent transition">About ▾</a>
+                    <a href="#" class="px-2 hover:text-accent transition">Programmes ▾</a>
+                    <a href="#" class="px-2 hover:text-accent transition">Admissions ▾</a>
+                    <a href="#" class="px-2 hover:text-accent transition">Campuses ▾</a>
+                    <a href="#" class="px-2 hover:text-accent transition">Placements ▾</a>
+                    <a href="#" class="px-2 hover:text-accent transition">Alumni</a>
+                    <a href="#" class="px-2 hover:text-accent transition">Faculty & Research ▾</a>
+                    <a href="#" class="px-2 hover:text-accent transition">AI Labs</a>
+                    <a href="#" class="px-2 hover:text-accent transition">CLTA</a>
+                </nav>
+            </div>
+
+            <!-- MOBILE MENU -->
+            <div id="mobileMenu" class="hidden w-full shadow-lg absolute bg-white z-50">
+                <div class="flex flex-col px-5 py-3 gap-3 text-sm text-black border-t border-gray-100">
+                    <a href="#" class="py-1 border-b border-gray-100">Blog</a>
+                    <a href="#" class="py-1 border-b border-gray-100">Online PGDM</a>
+                    <a href="#" class="py-1 border-b border-gray-100">Contact Us</a>
+                </div>
+                <div class="flex flex-col px-5 py-3 gap-3 text-sm font-bold text-white bg-primary">
+                    <a href="#" class="py-1 border-b border-white/20">About</a>
+                    <a href="#" class="py-1 border-b border-white/20">Programmes</a>
+                    <a href="#" class="py-1 border-b border-white/20">Campuses</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO BANNER -->
+        <section class="hero-banner relative w-full h-[60vh] min-h-[400px] flex items-center justify-center">
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+                <h1
+                    class="text-4xl md:text-6xl lg:text-[64px] font-extrabold leading-tight tracking-tight drop-shadow-lg">
+                    Jaipuria and the World
+                </h1>
+                <div class="w-24 h-[3px] bg-accent mx-auto mt-6"></div>
+                <p class="mt-6 text-xl lg:text-2xl font-light max-w-3xl mx-auto drop-shadow-md">
+                    Connecting our campuses to the world beyond.
+                </p>
+            </div>
+        </section>
+
+        <!-- INTRO: JAIPURIA AND THE WORLD -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="pr-0 lg:pr-8">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-secondary section-heading mb-8">
+                            A Global Vision
+                        </h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-lg text-justify">
+                            At Jaipuria Institute of Management, one of India's Top-Ranked Business Schools, the Central
+                            Office of International Relations (COIR) is the force that connects our campuses in Lucknow,
+                            Noida, Jaipur, and Indore to the world beyond. We are built on a singular conviction: that
+                            truly great management education does not end at the campus gate. It extends across
+                            cultures, continents, and communities.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-lg text-justify">
+                            Through a growing network of partnerships spanning Europe, Asia, Oceania, and the Middle
+                            East, COIR powers a full spectrum of global engagement, including student exchanges,
+                            international immersions, inbound programmes, faculty collaborations, virtual learning, and
+                            research partnerships. Every initiative is designed to ensure that every Jaipuria student
+                            and faculty member has access to experiences that are genuinely, irreversibly
+                            transformative.
+                        </p>
+                    </div>
+                    <div
+                        class="w-full relative hover-zoom overflow-hidden rounded-xl shadow-2xl border-2 border-lightbg">
+                        <img src="images/jaipuria_Jaipur.jpg" alt="Global Education" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="mt-16 w-full">
+                    <div
+                        class="bg-lightbg p-8 md:p-10 rounded-lg border-l-4 border-accent shadow-sm flex items-center gap-6">
+                        <i class="fa-solid fa-earth-americas text-5xl text-primary opacity-20 hidden md:block"></i>
+                        <p class="text-secondary font-semibold text-xl leading-relaxed italic">
+                            "Our commitment rests on three pillars: building intercultural competence, cultivating
+                            global awareness, and enabling transformative learning that prepares graduates to lead with
+                            clarity and confidence in an interconnected world."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERNATIONAL ACADEMIC COLLABORATIONS [PARTNER LOGOS] -->
+        <section class="py-16 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-secondary section-heading-center mb-12">
+                    Our Global Partners
+                </h2>
+
+                <!-- Logos Placeholder Grid -->
+                <style>
+                    @keyframes logo-scroll {
+                        0% {
+                            transform: translateX(0);
+                        }
+
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    .animate-logo-scroll {
+                        /* 40s ko change karke speed control kar sakte ho */
+                        animation: logo-scroll 40s linear infinite;
+                    }
+                </style>
+
+                <div class="relative w-full overflow-hidden bg-white py-12">
+                    <div
+                        class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 md:w-32 bg-gradient-to-r from-white to-transparent">
+                    </div>
+                    <div
+                        class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 md:w-32 bg-gradient-to-l from-white to-transparent">
+                    </div>
+
+                    <div
+                        class="animate-logo-scroll hover:[animation-play-state:paused] flex w-max items-center opacity-70 transition-opacity duration-300 hover:opacity-100">
+
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/10/IFA-logo.jpg" alt="IFA"
+                                class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/12/Royal_Thimphu_College_logo.svg"
+                                alt="Royal Thimpu College" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/12/UTP-logo.png" alt="UTP"
+                                class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/George-Mason-University-logo.png"
+                                alt="George Mason University" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2026/02/keele-university.webp"
+                                alt="Keele University" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2026/02/Frankfurt-School.webp"
+                                alt="Frankfurt School" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/tarumt-logo.png"
+                                alt="TAR University" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Uow-logo.png"
+                                alt="University Of Wollongong" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/nsbm-logo.png"
+                                alt="NSBM Green University" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/Rennes_School_of_Business1.png"
+                                alt="Rennes School of Business" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/whiteriaand-weltec-logo.png"
+                                alt="Whitireia & WelTec" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/Groupe-KEDGE-Business-School.png"
+                                alt="Groupe KEDGE" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/images.png"
+                                alt="Global Business Studies" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/ARA.png" alt="ARA Institute"
+                                class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/10/IFA-logo.jpg" alt="IFA"
+                                class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/12/Royal_Thimphu_College_logo.svg"
+                                alt="Royal Thimpu College" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/12/UTP-logo.png" alt="UTP"
+                                class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/George-Mason-University-logo.png"
+                                alt="George Mason University" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2026/02/keele-university.webp"
+                                alt="Keele University" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2026/02/Frankfurt-School.webp"
+                                alt="Frankfurt School" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/tarumt-logo.png"
+                                alt="TAR University" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Uow-logo.png"
+                                alt="University Of Wollongong" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/nsbm-logo.png"
+                                alt="NSBM Green University" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/Rennes_School_of_Business1.png"
+                                alt="Rennes School of Business" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/whiteriaand-weltec-logo.png"
+                                alt="Whitireia & WelTec" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/Groupe-KEDGE-Business-School.png"
+                                alt="Groupe KEDGE" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/images.png"
+                                alt="Global Business Studies" class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                        <div class="mx-6 md:mx-10 flex items-center justify-center">
+                            <img src="https://www.jaipuria.ac.in/wp-content/uploads/2024/11/ARA.png" alt="ARA Institute"
+                                class="h-12 md:h-16 w-auto object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDENTS GOING GLOBAL -->
+        <section class="py-20 bg-lightbg border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-secondary section-heading mb-16">
+                    Students Going Global
+                </h2>
+
+                <div class="space-y-16">
+                    <!-- Trimester Exchange Programme -->
+                    <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col lg:flex-row group border border-gray-100">
+                        <div class="lg:w-1/2 relative min-h-[350px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop"
+                                alt="Exchange Program"
+                                class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        </div>
+                        <div
+                            class="lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center bg-secondary text-white relative">
+                            <!-- Background pattern -->
+                            <i
+                                class="fa-solid fa-plane absolute right-[-20px] bottom-[-20px] text-[150px] text-white opacity-5"></i>
+
+                            <h3 class="text-2xl lg:text-3xl font-extrabold mb-6">Trimester Exchange Programme</h3>
+                            <p class="text-gray-200 mb-6 leading-relaxed text-lg text-justify">
+                                For students who are ready to experience the world as their classroom, Jaipuria offers
+                                the opportunity to spend a full academic trimester at a prestigious international
+                                partner university, living on campus, learning from world-renowned faculty, and
+                                collaborating with peers drawn from across the globe.
+                            </p>
+                            <p class="text-gray-200 leading-relaxed font-medium">
+                                It is not just an academic credit. It is a trimester that expands perspective, deepens
+                                confidence, and builds the kind of global networks that last a lifetime.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Short-Term International Immersion Programmes -->
+                    <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col lg:flex-row-reverse group border border-gray-100">
+                        <div class="lg:w-1/2 relative min-h-[350px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1000&auto=format&fit=crop"
+                                alt="Immersion Program"
+                                class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        </div>
+                        <div class="lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center relative">
+                            <i
+                                class="fa-solid fa-passport absolute left-[-20px] top-[-20px] text-[150px] text-primary opacity-5"></i>
+
+                            <h3 class="text-2xl lg:text-3xl font-extrabold text-secondary mb-6">Short-Term International
+                                Immersion Programmes</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed text-lg text-justify">
+                                Not every transformation requires months. Jaipuria's immersion programmes are intensive,
+                                purpose-built experiences that take students to the heart of global business, blending
+                                academic rigour, industry exposure, and cultural depth into journeys that are compact in
+                                time but expansive in impact.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed font-bold text-primary">
+                                Across multiple global destinations every year, our students do not just observe
+                                international business environments. They step inside them.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE WORLD COMING TO JAIPURIA (INBOUND) -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="md:w-5/12">
+                        <div
+                            class="relative rounded-full aspect-square overflow-hidden border-[10px] border-lightbg shadow-xl hover-zoom">
+                            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop"
+                                alt="International Students" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-7/12">
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-secondary section-heading mb-8">
+                            The World Coming to Jaipuria
+                        </h2>
+                        <h3 class="text-xl font-bold text-accent mb-4">Student Inbound Programmes</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg text-justify mb-6">
+                            Jaipuria's campuses are not just places where our students go global. They are destinations
+                            where the world comes to learn. Through structured inbound programmes, we welcome
+                            international students for short-term immersions, semester exchanges, and customised
+                            academic modules that offer a rich encounter with India's business landscape, cultural
+                            heritage, and socio-economic diversity.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-lg text-justify">
+                            Comprehensive support, including onboarding, accommodation, and cultural integration,
+                            ensures that every visiting student feels at home from day one and leaves transformed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GLOBAL LEARNING RIGHT HERE ON CAMPUS -->
+        <section class="py-20 bg-primary text-white relative overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-10">
+                <div
+                    class="absolute -top-[20%] -right-[10%] w-[50%] h-[150%] bg-white rounded-full blur-[100px] transform rotate-45">
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white section-heading-center">
+                        Global Learning, Right Here on Campus
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-xl hover:bg-white/20 transition duration-300">
+                        <i class="fa-solid fa-chalkboard-user text-4xl text-accent mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">International Teaching Week</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed">
+                            Distinguished faculty from our partner universities across the world are invited to our
+                            campuses to deliver full credit courses, bringing global pedagogy, international case
+                            studies, and world-class expertise directly into the Jaipuria classroom. Every session is a
+                            window into how the world thinks, teaches, and leads.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-xl hover:bg-white/20 transition duration-300">
+                        <i class="fa-solid fa-people-arrows text-4xl text-accent mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Inbound Faculty Exchange</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed">
+                            International faculty from partner institutions join our campuses to deliver academic
+                            modules across disciplines, enriching student learning with diverse perspectives, global
+                            frameworks, and teaching approaches that go far beyond the conventional.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-xl hover:bg-white/20 transition duration-300">
+                        <i class="fa-solid fa-laptop-code text-4xl text-accent mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Modular Teaching by Visiting International Faculty</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed">
+                            Leading professors from global institutions conduct focused, specialised academic sessions
+                            that sharpen students' understanding of contemporary global business challenges, bringing
+                            the knowledge of international management education to our campuses.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-xl hover:bg-white/20 transition duration-300 lg:col-span-1 md:col-span-2">
+                        <i class="fa-solid fa-microphone-lines text-4xl text-accent mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Expert Sessions & Research Webinars</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed">
+                            From guest lectures and Faculty Development Programmes to prestigious research seminars
+                            under the FT50 Star Series, Jaipuria regularly connects its students and faculty with
+                            leading academic and industry minds from institutions across North America, Europe, Asia,
+                            and Australia. Every session is an invitation to think bigger, question deeper, and reach
+                            further.
+                        </p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-xl hover:bg-white/20 transition duration-300 lg:col-span-2 md:col-span-2">
+                        <div class="flex flex-col md:flex-row gap-6 items-center">
+                            <div class="md:w-1/4 flex justify-center">
+                                <i class="fa-solid fa-earth-europe text-7xl text-accent"></i>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h3 class="text-xl font-bold mb-4">Collaborative Online International Learning (COIL)
+                                </h3>
+                                <p class="text-gray-200 text-sm leading-relaxed">
+                                    Through COIL, Jaipuria students and faculty collaborate virtually with peers from
+                                    partner institutions around the world, co-creating knowledge through joint
+                                    assignments, shared case discussions, and cross-border academic projects. Global
+                                    collaboration is no longer an exception at Jaipuria. It is a way of learning.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR FACULTY ON THE WORLD STAGE -->
+        <section class="py-20 bg-lightbg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div
+                    class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+                    <div class="md:w-5/12 relative min-h-[300px]">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop"
+                            alt="Faculty Global" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-7/12 p-10 lg:p-14">
+                        <h2 class="text-3xl font-extrabold text-secondary section-heading mb-6">
+                            Our Faculty on the World Stage
+                        </h2>
+                        <h3 class="text-lg font-bold text-accent mb-4">Outbound Faculty Engagement</h3>
+                        <p class="text-gray-600 leading-relaxed text-justify mb-4">
+                            When Jaipuria faculty step onto international campuses as visiting professors, exchange
+                            scholars, or academic collaborators, they return carrying something invaluable: a broader
+                            view of the world that finds its way into every lecture, every research paper, and every
+                            student they mentor.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-justify">
+                            Through active outbound faculty engagement at partner institutions across the globe,
+                            Jaipuria ensures that our classrooms are always informed by the world's best thinking.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEOS SECTION: STORIES & FACULTY -->
+        <section class="py-20 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Stories That Inspire -->
+                <div class="mb-20">
+                    <h2
+                        class="text-3xl md:text-4xl font-extrabold text-secondary section-heading-center text-center mb-12">
+                        Stories That Inspire
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Video Placeholder 1 -->
+                        <div class="video-card relative rounded-lg overflow-hidden shadow-md aspect-video bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600&auto=format&fit=crop"
+                                class="w-full h-full object-cover opacity-80" alt="Video thumbnail">
+                            <div class="play-btn-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <!-- Video Placeholder 2 -->
+                        <div class="video-card relative rounded-lg overflow-hidden shadow-md aspect-video bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=600&auto=format&fit=crop"
+                                class="w-full h-full object-cover opacity-80" alt="Video thumbnail">
+                            <div class="play-btn-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <!-- Video Placeholder 3 -->
+                        <div class="video-card relative rounded-lg overflow-hidden shadow-md aspect-video bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=600&auto=format&fit=crop"
+                                class="w-full h-full object-cover opacity-80" alt="Video thumbnail">
+                            <div class="play-btn-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Through the Eyes of Our Faculty -->
+                <div>
+                    <h2
+                        class="text-3xl md:text-4xl font-extrabold text-secondary section-heading-center text-center mb-12">
+                        Through the Eyes of Our Faculty
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                        <!-- Video Placeholder 1 -->
+                        <div class="video-card relative rounded-lg overflow-hidden shadow-md aspect-video bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=600&auto=format&fit=crop"
+                                class="w-full h-full object-cover opacity-80" alt="Faculty Video">
+                            <div class="play-btn-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <!-- Video Placeholder 2 -->
+                        <div class="video-card relative rounded-lg overflow-hidden shadow-md aspect-video bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop"
+                                class="w-full h-full object-cover opacity-80" alt="Faculty Video">
+                            <div class="play-btn-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONCLUSION BANNERS -->
+        <section class="bg-secondary py-20 text-center relative overflow-hidden">
+            <!-- decorative bg image -->
+            <div class="absolute inset-0 opacity-10"
+                style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop'); background-size: cover; background-position: center;">
+            </div>
+
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-8">
+                    At Jaipuria, the World Is Not a Destination. <br>
+                    <span class="text-accent">It Is a Mindset.</span>
+                </h2>
+                <p class="text-xl text-gray-300 font-light leading-relaxed max-w-4xl mx-auto">
+                    Whether through a semester abroad, an immersion across continents, a visiting professor in the
+                    classroom, a virtual collaboration with international peers, or a research dialogue with a global
+                    scholar, every initiative at COIR carries one purpose: <br>
+                    <strong class="text-white font-bold block mt-4 text-2xl">to ensure our graduates do not just enter
+                        the global arena. They lead within it.</strong>
+                </p>
+            </div>
+        </section>
+
+
+        <!-- FOOTER SECTION (Referenced Style) -->
+        <footer id="contact" class="bg-primary text-white">
+            <div class="max-w-[1200px] mx-auto p-5 lg:p-10 pt-12">
+
+                <!-- NEW GET IN TOUCH BLOCK -->
+                <div
+                    class="mb-10 text-center lg:text-left border-b border-white/20 pb-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                        <h2 class="text-2xl font-extrabold mb-2">Ready to explore global opportunities?</h2>
+                        <p class="text-gray-300">Connect with the Central Office of International Relations (COIR).</p>
+                    </div>
+                    <div class="bg-white/10 px-6 py-4 rounded-lg flex items-center gap-4">
+                        <i class="fa-solid fa-envelope text-accent text-2xl"></i>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-gray-300 font-bold mb-1">Get in
+                                Touch</span>
+                            <a href="mailto:dean.ir@jaipuria.ac.in"
+                                class="text-lg font-bold hover:text-accent transition">dean.ir@jaipuria.ac.in</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRID -->
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                    <!-- QUICK LINKS -->
+                    <div>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">Quick Links</h3>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="#" class="hover:text-accent transition">PGDM Fee Portal</a></li>
+                            <li><a href="#" class="hover:text-accent transition">AICTE Grievance Redressal</a></li>
+                            <li><a href="#" class="hover:text-accent transition">AICTE Feedback</a></li>
+                            <li><a href="#" class="hover:text-accent transition">Contact</a></li>
+                            <li><a href="#" class="hover:text-accent transition">Careers</a></li>
+                            <li><a href="#" class="hover:text-accent transition">Blog</a></li>
+                            <li><a href="#" class="hover:text-accent transition">NIRF Rankings</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- ADMISSIONS -->
+                    <div>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">PGDM/MBA Admissions
+                        </h3>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="#" class="hover:text-accent transition">PGDM/MBA Eligibility</a></li>
+                            <li><a href="#" class="hover:text-accent transition">How to Apply for PGDM/MBA</a></li>
+                            <li><a href="#" class="hover:text-accent transition">PGDM/MBA Course Fees</a></li>
+                            <li><a href="#" class="hover:text-accent transition">PGDM/MBA Scholarship</a></li>
+                            <li><a href="#" class="hover:text-accent transition">Download Brochure</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- PROGRAMMES -->
+                    <div>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">PGDM/MBA Programmes
+                        </h3>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="#" class="hover:text-accent transition">PGDM</a></li>
+                            <li><a href="#" class="hover:text-accent transition">PGDM (Financial Services)</a></li>
+                            <li><a href="#" class="hover:text-accent transition">PGDM (Retail Management)</a></li>
+                            <li><a href="#" class="hover:text-accent transition">PGDM (Marketing)</a></li>
+                            <li><a href="#" class="hover:text-accent transition">Online PGDM/MBA</a></li>
+                            <li><a href="#" class="hover:text-accent transition">Executive Education</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- CAMPUSES -->
+                    <div>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">Jaipuria Campuses</h3>
+                        <ul class="space-y-3 text-xs">
+                            <li>
+                                <strong>Lucknow</strong>
+                                <div class="ml-3 text-gray-300">› Virtual Tour</div>
+                            </li>
+                            <li>
+                                <strong>Noida</strong>
+                                <div class="ml-3 text-gray-300">› Virtual Tour</div>
+                            </li>
+                            <li>
+                                <strong>Jaipur</strong>
+                                <div class="ml-3 text-gray-300">› Virtual Tour</div>
+                            </li>
+                            <li>
+                                <strong>Indore</strong>
+                                <div class="ml-3 text-gray-300">› Virtual Tour</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t border-white/20 mt-8 pt-5 text-[11px] leading-relaxed text-gray-300">
+                    <p>
+                        Disclaimer: Jaipuria Institute of Management operates campuses at Noida, Lucknow, Jaipur, and
+                        Indore under the same group and governance. The Jaipuria Institute of Management campuses
+                        mentioned above are not affiliated with or associated with any other higher education/management
+                        institute using the "Jaipuria" name, including business institutes located in Ghaziabad or
+                        operated by other groups.
+                    </p>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center gap-4 mt-6 text-xs text-center md:text-left">
+                    <div class="order-3 md:order-1 text-gray-300">
+                        &copy; 2026 Jaipuria Institute of Management. All Rights Reserved.
+                    </div>
+                    <div class="flex gap-4 order-2 text-gray-300">
+                        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition">Terms of Use</a>
+                        <a href="#" class="hover:text-white transition">Sitemap</a>
+                    </div>
+                    <!-- Social Icons -->
+                    <div class="flex flex-wrap justify-center gap-4 text-lg lg:text-xl order-1 md:order-3">
+                        <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Inline Script for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
