@@ -133,39 +133,47 @@
     <div class="max-w-[1600px] mx-auto w-full">
 
         <!-- Main Navigation -->
-        <header id="mainHeader" class="w-full bg-white sticky z-50">
+        <header id="mainHeader" class="w-full bg-white sticky top-0 z-50">
 
             <!-- TOP BAR -->
-            <div class="max-w-[1200px] mx-auto px-4 py-5 flex items-center justify-between">
+            <div class="max-w-[1200px] mx-auto px-4 py-4 lg:py-5 flex items-center justify-between">
 
-                <div class="flex items-center gap-3">
+                <!-- Logos -->
+                <div class="flex items-center gap-2 lg:gap-3">
                     <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/Jaipuria-Logo.jpg"
-                        alt="Jaipuria Logo" class="w-56 h-auto pr-3 border-r border-gray-300" />
+                        alt="Jaipuria Logo" class="w-36 sm:w-44 lg:w-56 h-auto pr-2 lg:pr-3 border-r border-gray-300" />
                     <img src="https://www.jaipuria.ac.in/wp-content/uploads/2025/07/AACSB-Accredited-1.webp"
-                        alt="AACSB Accredited" class="w-14 h-auto" />
+                        alt="AACSB Accredited" class="w-9 sm:w-11 lg:w-14 h-auto" />
                 </div>
 
-                <div class="flex items-center gap-6 text-sm text-black">
+                <!-- Desktop Links (lg aur upar) -->
+                <div class="hidden lg:flex items-center gap-6 text-sm text-black">
                     <a href="#">Blog</a>
                     <a href="#">Online PGDM</a>
                     <a href="#">Executive Education</a>
                     <a href="#">Contact Us</a>
                     <a href="#">Student Fee Portal</a>
-
                     <a
                         class="text-white px-5 py-2 font-semibold text-[17px] rounded-[15px] bg-[linear-gradient(180deg,#d67b19_0%,#d67b19_100%)] font-sans">
                         APPLY NOW
                     </a>
                 </div>
 
+                <!-- Hamburger Button (mobile/tablet only) -->
+                <button id="menuToggle" class="lg:hidden flex flex-col justify-center gap-[5px] p-2 cursor-pointer"
+                    aria-label="Menu Toggle">
+                    <span id="bar1" class="block w-6 h-[2px] bg-gray-800 transition-all duration-300"></span>
+                    <span id="bar2" class="block w-6 h-[2px] bg-gray-800 transition-all duration-300"></span>
+                    <span id="bar3" class="block w-6 h-[2px] bg-gray-800 transition-all duration-300"></span>
+                </button>
+
             </div>
 
 
-            <!-- NAV BAR -->
-
-            <div class="w-full bg-primary mx-auto px-4">
-
-                <nav class="max-w-[1600px] flex items-center justify-center gap-4 text-white text-md font-bold py-3">
+            <!-- DESKTOP NAV BAR (lg aur upar) -->
+            <div class="hidden lg:block w-full bg-primary px-4">
+                <nav
+                    class="max-w-[1600px] mx-auto flex items-center justify-center gap-4 text-white text-md font-bold py-3">
                     <a href="#" class="px-2">About ▾</a>
                     <a href="#" class="px-2">Programmes ▾</a>
                     <a href="#" class="px-2">Admissions ▾</a>
@@ -176,6 +184,41 @@
                     <a href="#" class="px-2">AI Labs</a>
                     <a href="#" class="px-2">CLTA</a>
                 </nav>
+            </div>
+
+
+            <!-- MOBILE MENU (lg se neeche) -->
+            <div id="mobileMenu" class="hidden lg:hidden w-full shadow-lg">
+
+                <!-- Top Bar Links -->
+                <div class="flex flex-col px-5 py-3 gap-3 text-sm text-black bg-white border-t border-gray-100">
+                    <a href="#" class="py-1 border-b border-gray-100">Blog</a>
+                    <a href="#" class="py-1 border-b border-gray-100">Online PGDM</a>
+                    <a href="#" class="py-1 border-b border-gray-100">Executive Education</a>
+                    <a href="#" class="py-1 border-b border-gray-100">Contact Us</a>
+                    <a href="#" class="py-1">Student Fee Portal</a>
+                </div>
+
+                <!-- Nav Links -->
+                <div class="flex flex-col px-5 py-3 gap-3 text-sm font-bold text-white bg-primary">
+                    <a href="#" class="py-1 border-b border-white/20">About ▾</a>
+                    <a href="#" class="py-1 border-b border-white/20">Programmes ▾</a>
+                    <a href="#" class="py-1 border-b border-white/20">Admissions ▾</a>
+                    <a href="#" class="py-1 border-b border-white/20">Campuses ▾</a>
+                    <a href="#" class="py-1 border-b border-white/20">Placements ▾</a>
+                    <a href="#" class="py-1 border-b border-white/20">Alumni</a>
+                    <a href="#" class="py-1 border-b border-white/20">Faculty & Research ▾</a>
+                    <a href="#" class="py-1 border-b border-white/20">AI Labs</a>
+                    <a href="#" class="py-1">CLTA</a>
+                </div>
+
+                <!-- Apply Now Button -->
+                <div class="px-5 py-4 bg-white">
+                    <a
+                        class="block text-center text-white px-5 py-2.5 font-semibold text-[17px] rounded-[15px] bg-[linear-gradient(180deg,#d67b19_0%,#d67b19_100%)] font-sans">
+                        APPLY NOW
+                    </a>
+                </div>
 
             </div>
 
@@ -952,13 +995,14 @@
 
         <!-- Footer Area -->
         <footer id="contact" class="bg-primary text-white">
-            <div class="max-w-[1200px] mx-auto p-6">
+            <div class="max-w-[1200px] mx-auto p-5 lg:p-6">
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- GRID -->
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
 
                     <!-- QUICK LINKS -->
                     <div>
-                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-sm">Quick Links</h3>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">Quick Links</h3>
                         <ul class="space-y-2 text-xs">
                             <li><a href="#">PGDM Fee Portal</a></li>
                             <li><a href="#">AICTE Grievance Redressal</a></li>
@@ -974,7 +1018,8 @@
 
                     <!-- ADMISSIONS -->
                     <div>
-                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-sm">PGDM/MBA Admissions</h3>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">PGDM/MBA Admissions
+                        </h3>
                         <ul class="space-y-2 text-xs">
                             <li><a href="#">PGDM/MBA Eligibility</a></li>
                             <li><a href="#">How to Apply for PGDM/MBA</a></li>
@@ -983,7 +1028,7 @@
                             <li><a href="#">Download Brochure</a></li>
                         </ul>
 
-                        <h3 class="font-semibold mt-5 mb-3 uppercase tracking-wide text-sm">Information</h3>
+                        <h3 class="font-semibold mt-5 mb-3 uppercase tracking-wide text-xs lg:text-sm">Information</h3>
                         <ul class="space-y-2 text-xs">
                             <li><a href="#">Accreditations & Approvals</a></li>
                             <li><a href="#">Downloads</a></li>
@@ -993,7 +1038,8 @@
 
                     <!-- PROGRAMMES -->
                     <div>
-                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-sm">PGDM/MBA Programmes</h3>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">PGDM/MBA Programmes
+                        </h3>
                         <ul class="space-y-2 text-xs">
                             <li><a href="#">PGDM</a></li>
                             <li><a href="#">PGDM (Financial Services)</a></li>
@@ -1008,7 +1054,7 @@
 
                     <!-- CAMPUSES -->
                     <div>
-                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-sm">Jaipuria Campuses</h3>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">Jaipuria Campuses</h3>
                         <ul class="space-y-3 text-xs">
                             <li>
                                 Jaipuria Institute of Management Lucknow
@@ -1040,26 +1086,29 @@
                         Disclaimer: Jaipuria Institute of Management operates campuses at Noida, Lucknow, Jaipur, and
                         Indore under the same group and governance. The Jaipuria Institute of Management campuses
                         mentioned above are not affiliated with or associated with any other higher education/management
-                        institute using the “Jaipuria” name, including business institutes located in Ghaziabad or
+                        institute using the "Jaipuria" name, including business institutes located in Ghaziabad or
                         operated by other groups.
                     </p>
                 </div>
 
-                <!-- Bottom -->
-                <div class="flex flex-col md:flex-row justify-between items-center mt-3 text-xs">
+                <!-- Bottom Bar -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center gap-4 mt-4 text-xs text-center md:text-left">
 
-                    <div>
+                    <!-- Copyright -->
+                    <div class="order-3 md:order-1">
                         &copy; 2026 Jaipuria Institute of Management. All Rights Reserved.
                     </div>
 
-                    <div class="flex gap-4">
+                    <!-- Policy Links -->
+                    <div class="flex gap-4 order-2">
                         <a href="#">Privacy Policy</a>
                         <a href="#">Terms of Use</a>
                         <a href="#">Sitemap</a>
                     </div>
 
                     <!-- Social Icons -->
-                    <div class="flex gap-3 text-2xl">
+                    <div class="flex flex-wrap justify-center gap-3 text-xl lg:text-2xl order-1 md:order-3">
                         <span class="hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></span>
                         <span class="hover:scale-110 transition"><i class="fa-brands fa-x-twitter"></i></span>
                         <span class="hover:scale-110 transition"><i class="fa-brands fa-youtube"></i></span>
