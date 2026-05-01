@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Relations | Jaipuria Institute of Management</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+
+    <!-- Fonts aur Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN setup -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#356C8E', // Jaipuria Blue
+                        secondary: '#4D3164', // Jaipuria Purple
+                        accent: '#D67B19', // Jaipuria Orange
+                        lightbg: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero-banner {
+            background-image: linear-gradient(to right, rgba(77, 49, 100, 0.85), rgba(53, 108, 142, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #D67B19;
+            margin-top: 16px;
+        }
+
+        .section-heading-center::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #D67B19;
+            margin: 16px auto 0;
+        }
+
+        /* Hover effects for cards */
+        .hover-card-zoom img {
+            transition: transform 0.6s ease;
+        }
+
+        .hover-card-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Tabs Styling */
+        .tab-btn {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: #356C8E;
+            font-weight: 700;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #D67B19;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Testimonial slider */
+        .testimonial-slide {
+            display: none;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#EEEEEE] text-gray-800">
+    <div class="max-w-[1600px] mx-auto w-full">
+
+        <main class="w-full font-sans text-gray-800">
+
+            <section class="w-full">
+                <img src="path-to-your-hero-image.jpg" alt="Students in traditional attire"
+                    class="w-full h-[400px] object-cover">
+            </section>
+
+            <section class="bg-[#1e2844] text-white py-8">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 text-center gap-6 divide-x divide-gray-600">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-1">25+</h3>
+                            <p class="text-sm text-gray-300">Global University Partners</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold mb-1">4</h3>
+                            <p class="text-sm text-gray-300">Campuses 1 Legacy</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold mb-1">6+</h3>
+                            <p class="text-sm text-gray-300">International Faculty</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold mb-1">4</h3>
+                            <p class="text-sm text-gray-300">Continents Global Reach</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-3xl font-bold text-[#1e2844] mb-6">Jaipuria and the World</h2>
+                <div class="space-y-4 text-gray-600 text-base leading-relaxed">
+                    <p>At Jaipuria Institute of Management, we believe that education must go beyond borders. In today's
+                        interconnected world, global exposure is not just an advantage; it is a necessity. Our
+                        International Relations Office is dedicated to fostering global partnerships and providing our
+                        students with a truly international perspective.</p>
+                    <p>We aim to create future-ready leaders who can navigate diverse cultures and complex global
+                        business environments. Through our extensive network of partner universities, we offer a
+                        plethora of opportunities for students to study abroad, engage with international faculty, and
+                        participate in cross-cultural research projects.</p>
+                    <p>Join us to expand your horizons and embrace a global mindset that will set you apart in your
+                        professional journey.</p>
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <h2 class="text-2xl font-bold text-[#1e2844] mb-2">International Academic Collaborations</h2>
+                <p class="text-gray-500 mb-8">Expanding Horizons, Forging Global Ties</p>
+
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-8 items-center justify-items-center">
+                    <img src="logo1.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo2.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo3.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo4.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo5.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo6.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo7.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo8.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo9.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo10.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo11.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                    <img src="logo12.png" alt="Partner Logo"
+                        class="h-12 object-contain grayscale hover:grayscale-0 transition">
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-3xl font-bold text-[#1e2844] mb-10">Students Going Global</h2>
+
+                <div class="flex flex-col md:flex-row items-center gap-10 mb-16">
+                    <div class="w-full md:w-1/2">
+                        <img src="students1.jpg" alt="Trimester Exchange" class="rounded-lg shadow-md w-full h-auto">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-xl font-bold text-[#1e2844] mb-4">Trimester Exchange Programmes</h3>
+                        <p class="text-gray-600 leading-relaxed">Students have the opportunity to spend a full trimester
+                            at one of our esteemed partner universities across the globe. This immersive experience
+                            allows them to study international curriculum, interact with diverse peer groups, and gain a
+                            profound understanding of global business dynamics. Credits earned are seamlessly
+                            transferred, ensuring academic continuity.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="w-full md:w-1/2">
+                        <img src="students2.jpg" alt="Short-Term Immersion" class="rounded-lg shadow-md w-full h-auto">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-xl font-bold text-[#1e2844] mb-4">Short-Term International Immersion Programmes
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">For those seeking condensed yet impactful global
+                            exposure, our short-term immersion programs are ideal. Ranging from 2 to 4 weeks, these
+                            programs combine academic sessions, industry visits, and cultural excursions. They are
+                            designed to provide a rapid yet deep dive into the business practices and cultural nuances
+                            of a foreign country.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-50 py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <div class="w-full md:w-1/2">
+                            <h2 class="text-3xl font-bold text-[#1e2844] mb-6">The World Coming to Jaipuria</h2>
+                            <h4 class="text-lg font-semibold text-[#1e2844] mb-4">International Visiting Faculty</h4>
+                            <p class="text-gray-600 leading-relaxed">At Jaipuria, internationalization is a two-way
+                                street. We regularly host distinguished faculty from our global partner institutions to
+                                teach full modules or conduct specialized workshops. This ensures that every student on
+                                campus benefits from international perspectives, diverse teaching methodologies, and
+                                global best practices, even without traveling abroad.</p>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <img src="faculty-visiting.jpg" alt="Visiting Faculty"
+                                class="rounded-lg shadow-md w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-2xl font-bold text-[#1e2844] mb-10">Global Learning Opportunities on Campus</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition">
+                        <div class="w-10 h-10 mb-4 text-[#e67e22]">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#1e2844] mb-2">International Guest Sessions</h3>
+                        <p class="text-sm text-gray-500">Regular interactions with international industry experts and
+                            academicians to keep students abreast of global trends.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition">
+                        <div class="w-10 h-10 mb-4 text-[#e67e22]">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v-2H4v6h16v-6h-2v2h-2v-5h-2v5z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#1e2844] mb-2">International Conferences</h3>
+                        <p class="text-sm text-gray-500">Platform for students and faculty to present research papers
+                            and network with global scholars.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition">
+                        <div class="w-10 h-10 mb-4 text-[#e67e22]">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#1e2844] mb-2">Collaborative Research with International
+                            Faculty</h3>
+                        <p class="text-sm text-gray-500">Joint research initiatives fostering cross-cultural
+                            understanding and innovative problem-solving.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition">
+                        <div class="w-10 h-10 mb-4 text-[#e67e22]">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#1e2844] mb-2">Student Driven International Initiatives</h3>
+                        <p class="text-sm text-gray-500">Empowering students to organize and lead global-centric events,
+                            clubs, and cultural exchange programs.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition">
+                        <div class="w-10 h-10 mb-4 text-[#e67e22]">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.09 13.36 4 12.69 4 12s.09-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.07c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.02 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.17.64.26 1.31.26 2s-.09 1.36-.26 2h-3.38z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#1e2844] mb-2">Collaborations with International NGOs</h3>
+                        <p class="text-sm text-gray-500">Opportunities for students to engage in meaningful social
+                            projects on a global scale.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-[#2c2847] text-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row gap-12">
+                        <div class="w-full md:w-1/3">
+                            <h2 class="text-3xl font-bold mb-4">Our Faculty on the World Stage</h2>
+                            <p class="text-sm text-gray-300 leading-relaxed">Our esteemed faculty members are actively
+                                engaged in the global academic community. Their international endeavors enrich the
+                                curriculum and bring diverse perspectives to the classroom, ensuring our students
+                                receive a truly world-class education.</p>
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <ul class="space-y-6">
+                                <li class="flex items-start border-b border-gray-600 pb-4">
+                                    <div class="w-8 h-8 mr-4 text-[#e67e22] mt-1">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Teaching Assignments</h4>
+                                        <p class="text-sm text-gray-400">Delivering lectures and modules at prestigious
+                                            international partner universities.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start border-b border-gray-600 pb-4">
+                                    <div class="w-8 h-8 mr-4 text-[#e67e22] mt-1">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Collaborative Research</h4>
+                                        <p class="text-sm text-gray-400">Partnering with global scholars on impactful
+                                            research publications and academic papers.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start border-b border-gray-600 pb-4">
+                                    <div class="w-8 h-8 mr-4 text-[#e67e22] mt-1">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Speaking Engagements</h4>
+                                        <p class="text-sm text-gray-400">Invited as keynote speakers and panelists at
+                                            prominent international conferences.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start border-b border-gray-600 pb-4">
+                                    <div class="w-8 h-8 mr-4 text-[#e67e22] mt-1">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Advisory Board Memberships</h4>
+                                        <p class="text-sm text-gray-400">Serving on advisory boards of international
+                                            organizations and academic journals.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+                <h2 class="text-2xl font-bold text-[#1e2844] mb-8">Global Learning Opportunities on Campus</h2>
+                <div class="border rounded-lg overflow-hidden shadow-sm">
+                    <img src="map-image.png" alt="World Map showcasing global reach" class="w-full h-auto">
+                </div>
+            </section>
+
+            <section class="bg-gradient-to-r from-[#17203b] to-[#2c2847] py-16 text-center px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-white max-w-4xl mx-auto leading-snug">
+                    "At Jaipuria, the World is Not a Destination. <br /> It is a <span
+                        class="text-[#e67e22]">Mindset.</span>"
+                </h2>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
+                <h2 class="text-2xl font-bold text-[#1e2844] mb-8">Stories That Inspire</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="relative">
+                            <img src="video-thumb1.jpg" alt="Video Thumbnail" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="bg-red-600 text-white rounded-full p-3"><svg class="w-6 h-6"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="font-semibold text-sm text-[#1e2844]">Admissions: The Change in Everything</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="relative">
+                            <img src="video-thumb2.jpg" alt="Video Thumbnail" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="bg-red-600 text-white rounded-full p-3"><svg class="w-6 h-6"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="font-semibold text-sm text-[#1e2844]">Admissions: The Change in Everything</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="relative">
+                            <img src="video-thumb3.jpg" alt="Video Thumbnail" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="bg-red-600 text-white rounded-full p-3"><svg class="w-6 h-6"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="font-semibold text-sm text-[#1e2844]">Admissions: The Change in Everything</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 bg-gray-50">
+                <h2 class="text-2xl font-bold text-[#1e2844] mb-8">Through the eyes of our faculty</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="relative">
+                            <img src="faculty-thumb1.jpg" alt="Video Thumbnail" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="bg-red-600 text-white rounded-full p-3"><svg class="w-6 h-6"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="font-semibold text-sm text-[#1e2844]">Experiences and Insights</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="relative">
+                            <img src="faculty-thumb2.jpg" alt="Video Thumbnail" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="bg-red-600 text-white rounded-full p-3"><svg class="w-6 h-6"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="font-semibold text-sm text-[#1e2844]">Experiences and Insights</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="relative">
+                            <img src="faculty-thumb3.jpg" alt="Video Thumbnail" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="bg-red-600 text-white rounded-full p-3"><svg class="w-6 h-6"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="font-semibold text-sm text-[#1e2844]">Experiences and Insights</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="flex flex-col md:flex-row gap-10 bg-white p-8 rounded-xl shadow-md border border-gray-100">
+
+                    <div class="w-full md:w-1/3">
+                        <h2 class="text-2xl font-bold text-[#1e2844] mb-4">Get in Touch with COIR</h2>
+                        <p class="text-gray-600 mb-6 text-sm">For any inquiries, partnerships, or more information about
+                            our international programs, please feel free to reach out. We look forward to connecting
+                            with you.</p>
+                        <button
+                            class="bg-[#1e2844] hover:bg-[#2c385c] text-white px-6 py-2 rounded font-medium transition">Email
+                            Us at COIR</button>
+                    </div>
+
+                    <div class="w-full md:w-2/3">
+                        <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="sr-only">Enter Name</label>
+                                <input type="text" placeholder="Enter Name*"
+                                    class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:border-[#1e2844]">
+                            </div>
+                            <div>
+                                <label class="sr-only">Enter Email</label>
+                                <input type="email" placeholder="Enter Email*"
+                                    class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:border-[#1e2844]">
+                            </div>
+                            <div>
+                                <label class="sr-only">Enter Mobile No</label>
+                                <input type="tel" placeholder="Enter Mobile No.*"
+                                    class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:border-[#1e2844]">
+                            </div>
+                            <div>
+                                <label class="sr-only">Select Campus</label>
+                                <select
+                                    class="w-full border border-gray-300 rounded p-3 text-gray-500 focus:outline-none focus:border-[#1e2844]">
+                                    <option>Select Campus*</option>
+                                    <option>Lucknow</option>
+                                    <option>Noida</option>
+                                    <option>Jaipur</option>
+                                    <option>Indore</option>
+                                </select>
+                            </div>
+
+                            <div class="md:col-span-2 flex items-start gap-2 mt-2">
+                                <input type="checkbox" id="consent" class="mt-1">
+                                <label for="consent" class="text-xs text-gray-500">I agree to receive information
+                                    regarding my submitted enquiry on Jaipuria Institute of Management.</label>
+                            </div>
+
+                            <div class="md:col-span-2 text-right mt-4">
+                                <button type="submit"
+                                    class="bg-[#e67e22] hover:bg-[#d67118] text-white px-8 py-3 rounded font-medium transition w-full md:w-auto">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Area -->
+        <footer id="contact" class="bg-primary text-white">
+            <div class="max-w-[1200px] mx-auto p-5 lg:p-6">
+
+                <!-- GRID -->
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+
+                    <!-- QUICK LINKS -->
+                    <div>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">Quick Links</h3>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="#">PGDM Fee Portal</a></li>
+                            <li><a href="#">AICTE Grievance Redressal</a></li>
+                            <li><a href="#">AICTE Feedback</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Changemaker Series</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Jaipuria Events</a></li>
+                            <li><a href="#">NIRF Rankings</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- ADMISSIONS -->
+                    <div>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">PGDM/MBA Admissions
+                        </h3>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="#">PGDM/MBA Eligibility</a></li>
+                            <li><a href="#">How to Apply for PGDM/MBA</a></li>
+                            <li><a href="#">PGDM/MBA Course Fees</a></li>
+                            <li><a href="#">PGDM/MBA Scholarship</a></li>
+                            <li><a href="#">Download Brochure</a></li>
+                        </ul>
+
+                        <h3 class="font-semibold mt-5 mb-3 uppercase tracking-wide text-xs lg:text-sm">Information</h3>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="#">Accreditations & Approvals</a></li>
+                            <li><a href="#">Downloads</a></li>
+                            <li><a href="#">CAPI</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- PROGRAMMES -->
+                    <div>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">PGDM/MBA Programmes
+                        </h3>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="#">PGDM</a></li>
+                            <li><a href="#">PGDM (Financial Services)</a></li>
+                            <li><a href="#">PGDM (Retail Management)</a></li>
+                            <li><a href="#">PGDM (Marketing)</a></li>
+                            <li><a href="#">PGDM (Service Management)</a></li>
+                            <li><a href="#">FPM (Doctoral Level)</a></li>
+                            <li><a href="#">Online PGDM/MBA</a></li>
+                            <li><a href="#">Executive Education</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- CAMPUSES -->
+                    <div>
+                        <h3 class="font-semibold mb-3 uppercase tracking-wide text-xs lg:text-sm">Jaipuria Campuses</h3>
+                        <ul class="space-y-3 text-xs">
+                            <li>
+                                Jaipuria Institute of Management Lucknow
+                                <div class="ml-3 text-xs">› Virtual Tour</div>
+                            </li>
+                            <li>
+                                Jaipuria Institute of Management Noida
+                                <div class="ml-3 text-xs">› Virtual Tour</div>
+                            </li>
+                            <li>
+                                Jaipuria Institute of Management Jaipur
+                                <div class="ml-3 text-xs">› Virtual Tour</div>
+                            </li>
+                            <li>
+                                Jaipuria Institute of Management Indore
+                                <div class="ml-3 text-xs">› Virtual Tour</div>
+                            </li>
+                            <li class="text-xs pt-2">
+                                AIU Recognized PGDM courses Equivalent to MBA
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t border-white/30 mt-6 pt-5 text-[11px] leading-relaxed">
+                    <p>
+                        Disclaimer: Jaipuria Institute of Management operates campuses at Noida, Lucknow, Jaipur, and
+                        Indore under the same group and governance. The Jaipuria Institute of Management campuses
+                        mentioned above are not affiliated with or associated with any other higher education/management
+                        institute using the "Jaipuria" name, including business institutes located in Ghaziabad or
+                        operated by other groups.
+                    </p>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center gap-4 mt-4 text-xs text-center md:text-left">
+
+                    <!-- Copyright -->
+                    <div class="order-3 md:order-1">
+                        &copy; 2026 Jaipuria Institute of Management. All Rights Reserved.
+                    </div>
+
+                    <!-- Policy Links -->
+                    <div class="flex gap-4 order-2">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Use</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex flex-wrap justify-center gap-3 text-xl lg:text-2xl order-1 md:order-3">
+                        <span class="hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></span>
+                        <span class="hover:scale-110 transition"><i class="fa-brands fa-x-twitter"></i></span>
+                        <span class="hover:scale-110 transition"><i class="fa-brands fa-youtube"></i></span>
+                        <span class="hover:scale-110 transition"><i class="fa-brands fa-linkedin"></i></span>
+                        <span class="hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></span>
+                        <span class="hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></span>
+                        <span class="hover:scale-110 transition"><i class="fa-brands fa-telegram"></i></span>
+                        <span class="hover:scale-110 transition"><i class="fa-brands fa-quora"></i></span>
+                        <span class="hover:scale-110 transition"><i class="fa-solid fa-rss"></i></span>
+                    </div>
+
+                </div>
+
+            </div>
+        </footer>
+    </div>
+
+    <script src="main.js" defer></script>
+    <script src="partners.js" defer></script>
+
+</body>
+
+</html>
