@@ -1,95 +1,134 @@
-// Menu JS
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const bar1 = document.getElementById("bar1");
-const bar2 = document.getElementById("bar2");
-const bar3 = document.getElementById("bar3");
+// 1. Reusable Class for Opacity/Fade Sliders (Hero Slider)
+class FadeSlider {
+    constructor(slideSelector, prevBtnId, nextBtnId, interval = 5000) {
+        this.slides = document.querySelectorAll(slideSelector);
+        this.current = 0;
+        this.intervalTime = interval;
+        this.timer = null;
 
-let isOpen = false;
+        if (!this.slides.length) return;
 
-menuToggle.addEventListener("click", () => {
-  isOpen = !isOpen;
-  mobileMenu.classList.toggle("hidden", !isOpen);
+        document.getElementById(nextBtnId)?.addEventListener('click', () => {
+            this.next();
+            this.resetTimer();
+        });
+        document.getElementById(prevBtnId)?.addEventListener('click', () => {
+            this.prev();
+            this.resetTimer();
+        });
 
-  // Hamburger → X animation
-  if (isOpen) {
-    bar1.style.transform = "translateY(7px) rotate(45deg)";
-    bar2.style.opacity = "0";
-    bar3.style.transform = "translateY(-7px) rotate(-45deg)";
-  } else {
-    bar1.style.transform = "";
-    bar2.style.opacity = "1";
-    bar3.style.transform = "";
-  }
+        this.startTimer();
+    }
+
+    showSlide(index) {
+        this.slides.forEach((slide, i) => {
+            slide.style.opacity = i === index ? "1" : "0";
+        });
+    }
+
+    next() {
+        this.current = (this.current + 1) % this.slides.length;
+        this.showSlide(this.current);
+    }
+
+    prev() {
+        this.current = (this.current - 1 + this.slides.length) % this.slides.length;
+        this.showSlide(this.current);
+    }
+
+    startTimer() {
+        if (this.intervalTime) {
+            this.timer = setInterval(() => this.next(), this.intervalTime);
+        }
+    }
+
+    resetTimer() {
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.startTimer();
+        }
+    }
+}
+
+// 2. Reusable Class for Translate/Track Sliders with Dots (Global Learning Slider)
+class TrackSlider {
+    constructor(trackId, prevBtnId, nextBtnId, dotsContainerId, interval = 5000) {
+        this.track = document.getElementById(trackId);
+        if (!this.track) return;
+
+        this.slides = this.track.children;
+        this.total = this.slides.length;
+        this.current = 0;
+        this.dotsContainer = document.getElementById(dotsContainerId);
+        this.intervalTime = interval;
+        this.timer = null;
+
+        this.initDots();
+
+        document.getElementById(nextBtnId)?.addEventListener('click', () => {
+            this.next();
+            this.resetTimer();
+        });
+        document.getElementById(prevBtnId)?.addEventListener('click', () => {
+            this.prev();
+            this.resetTimer();
+        });
+
+        this.startTimer();
+    }
+
+    initDots() {
+        if (!this.dotsContainer) return;
+        for (let i = 0; i < this.total; i++) {
+            const dot = document.createElement('button');
+            dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${i === 0 ? 'bg-accent w-6' : 'bg-gray-400 hover:bg-gray-600'}`;
+            dot.addEventListener('click', () => {
+                this.goToSlide(i);
+                this.resetTimer(); // Dot click par bhi timer reset hoga
+            });
+            this.dotsContainer.appendChild(dot);
+        }
+    }
+
+    updateDots() {
+        if (!this.dotsContainer) return;
+        Array.from(this.dotsContainer.children).forEach((dot, index) => {
+            dot.className = index === this.current
+                ? 'w-6 h-3 rounded-full transition-all duration-300 bg-accent'
+                : 'w-3 h-3 rounded-full transition-all duration-300 bg-gray-400 hover:bg-gray-600';
+        });
+    }
+
+    goToSlide(index) {
+        this.current = index;
+        this.track.style.transform = `translateX(-${this.current * 100}%)`;
+        this.updateDots();
+    }
+
+    next() {
+        this.goToSlide((this.current + 1) % this.total);
+    }
+
+    prev() {
+        this.goToSlide((this.current - 1 + this.total) % this.total);
+    }
+
+    startTimer() {
+        if (this.intervalTime) {
+            this.timer = setInterval(() => this.next(), this.intervalTime);
+        }
+    }
+
+    resetTimer() {
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.startTimer();
+        }
+    }
+}
+
+// 3. Initialize cleanly
+document.addEventListener('DOMContentLoaded', () => {
+    new FadeSlider("#heroSlider .slide", "prevSlide", "nextSlide", 5000);
+    new TrackSlider('gl-slider-track', 'gl-prev-btn', 'gl-next-btn', 'gl-dots-container', 5000);
 });
-
-const slides = document.querySelectorAll("#heroSlider .slide");
-let current = 0;
-
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.style.opacity = i === index ? "1" : "0";
-  });
-}
-
-function nextSlide() {
-  current = (current + 1) % slides.length;
-  showSlide(current);
-}
-
-function prevSlide() {
-  current = (current - 1 + slides.length) % slides.length;
-  showSlide(current);
-}
-
-document.getElementById("nextSlide").onclick = nextSlide;
-document.getElementById("prevSlide").onclick = prevSlide;
-
-setInterval(nextSlide, 5000);
-
-// Mobile Menu Toggle
-const btn = document.getElementById("mobile-menu-btn");
-const menu = document.getElementById("mobile-menu");
-btn.addEventListener("click", () => menu.classList.toggle("hidden"));
-
-// Tabbed Interface Logic for Global Partners
-function openTab(evt, tabName) {
-  let i, tabcontent, tablinks;
-
-  // Sabhi tab content hide karo
-  tabcontent = document.getElementsByClassName("tab-content");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].classList.remove("active");
-  }
-
-  // Sabhi tab buttons se active class hatao
-  tablinks = document.getElementsByClassName("tab-btn");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].classList.remove("active");
-  }
-
-  // Current tab dikhao aur button active karo
-  document.getElementById(tabName).classList.add("active");
-  evt.currentTarget.classList.add("active");
-}
-
-// Testimonial Slider Logic
-// let currentSlide = 0;
-// const tslides = document.querySelectorAll('.testimonial-slide');
-
-// function showSlide(index) {
-//     tslides.forEach((slide, i) => {
-//         slide.classList.remove('active');
-//         if (i === index) slide.classList.add('active');
-//     });
-// }
-
-// function nextSlide() {
-//     currentSlide = (currentSlide + 1) % tslides.length;
-//     showSlide(currentSlide);
-// }
-
-// function prevSlide() {
-//     currentSlide = (currentSlide - 1 + tslides.length) % tslides.length;
-//     showSlide(currentSlide);
-// }
